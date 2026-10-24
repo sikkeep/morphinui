@@ -1,0 +1,31 @@
+{
+  "name": "morphinui",
+  "version": "0.1.0",
+  "description": "Add Morphin UI components to your project: npx morphinui@latest add button",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "morphinui": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "morphin",
+    "shadcn",
+    "react",
+    "tailwindcss",
+    "base-ui",
+    "cli",
+    "components"
+  ],
+  "homepage": "https://morphin.dev",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepack": "npm run build"
+  }
+}

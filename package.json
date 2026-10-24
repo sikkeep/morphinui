@@ -1,0 +1,58 @@
+{
+  "name": "morphin-ui",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Source of the Morphin component registry: React, TypeScript, Tailwind CSS v4, Base UI and GSAP components you copy into your project with the shadcn CLI.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=24.22.1 <25"
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "tailwindcss",
+    "base-ui",
+    "components",
+    "morphin"
+  ],
+  "scripts": {
+    "build": "npm run typecheck && npm run registry:build",
+    "registry:build": "shadcn build -o public/r",
+    "registry:sync": "node --import tsx scripts/registry-sync.ts",
+    "site:install": "node --import tsx scripts/site-install.ts",
+    "cli:build": "npm run build --prefix packages/morphinui",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:registry": "node --import tsx scripts/verify-registry.ts"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.9.0",
+    "ascii-reveal": "github:quanhoangindex/ascii-reveal#7339882106c2a3b771c44670344b448f5c5a674a",
+    "border-beam": "^1.4.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cuelume": "^0.2.8",
+    "gsap": "^3.15.0",
+    "loading-dev": "^0.3.5",
+    "lucide-react": "^0.468.0",
+    "react-day-picker": "^10.0.2",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.0.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "jsdom": "^27.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "shadcn": "4.21.5",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.0",
+    "vite": "^7.0.0",
+    "vitest": "^3.2.0"
+  }
+}

@@ -1,0 +1,976 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "morphin",
+  "homepage": "https://morphin.dev",
+  "items": [
+    {
+      "name": "motion",
+      "type": "registry:lib",
+      "title": "Motion",
+      "description": "The shared reduced-motion policy and motion tokens used by every Morphin animation.",
+      "files": [
+        {
+          "path": "registry/morphin/lib/motion.tsx",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "sound",
+      "type": "registry:lib",
+      "title": "Sound",
+      "description": "The interface-sound policy every Morphin component follows: SoundProvider, useSound and the cue queue. Silent until a provider turns it on; loads no audio by itself.",
+      "files": [
+        {
+          "path": "registry/morphin/lib/sound.tsx",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "sound-cuelume",
+      "type": "registry:lib",
+      "title": "Sound: Cuelume",
+      "description": "Plays Morphin's interface sounds with Cuelume (MIT): fourteen cues synthesized live with Web Audio, no audio files.",
+      "dependencies": [
+        "cuelume@^0.2.8"
+      ],
+      "registryDependencies": [
+        "@morphin/sound"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/lib/sound-cuelume.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "tokens",
+      "type": "registry:item",
+      "title": "Morphin tokens",
+      "description": "The extra tokens Morphin components need on top of a shadcn theme: hover and pressed states derived from your colors, a third text level, status colors (and softer success and failure colors for light surfaces), the brand color, disabled states, the corner shape and the menu shadow. Existing values are never overwritten.",
+      "cssVars": {
+        "theme": {
+          "color-primary-hover": "var(--primary-hover)",
+          "color-primary-active": "var(--primary-active)",
+          "color-secondary-hover": "var(--secondary-hover)",
+          "color-secondary-active": "var(--secondary-active)",
+          "color-brand": "var(--brand)",
+          "color-brand-foreground": "var(--brand-foreground)",
+          "color-brand-hover": "var(--brand-hover)",
+          "color-brand-active": "var(--brand-active)",
+          "color-destructive-foreground": "var(--destructive-foreground)",
+          "color-destructive-hover": "var(--destructive-hover)",
+          "color-destructive-active": "var(--destructive-active)",
+          "color-disabled": "var(--disabled)",
+          "color-disabled-foreground": "var(--disabled-foreground)",
+          "shadow-popover": "var(--popover-shadow)",
+          "color-subtle-foreground": "var(--subtle-foreground)",
+          "color-success": "var(--success)",
+          "color-success-foreground": "var(--success-foreground)",
+          "color-warning": "var(--warning)",
+          "color-warning-foreground": "var(--warning-foreground)",
+          "color-info": "var(--info)",
+          "color-info-foreground": "var(--info-foreground)",
+          "color-success-soft": "var(--success-soft)",
+          "color-destructive-soft": "var(--destructive-soft)",
+          "text-2xs": "0.6875rem",
+          "text-2xs--line-height": "0.75rem",
+          "text-2xs--letter-spacing": "0.02em",
+          "color-field": "var(--field)",
+          "color-field-border": "var(--field-border)",
+          "color-surface-raised": "var(--surface-raised)",
+          "color-menu": "var(--menu)"
+        },
+        "light": {
+          "primary-hover": "color-mix(in oklch, var(--primary), white 12%)",
+          "primary-active": "color-mix(in oklch, var(--primary), black 15%)",
+          "secondary-hover": "color-mix(in oklch, var(--secondary), var(--foreground) 6%)",
+          "secondary-active": "color-mix(in oklch, var(--secondary), var(--foreground) 10%)",
+          "destructive-hover": "color-mix(in oklch, var(--destructive), black 12%)",
+          "destructive-active": "color-mix(in oklch, var(--destructive), black 22%)",
+          "disabled": "var(--muted)",
+          "disabled-foreground": "color-mix(in oklch, var(--muted-foreground), var(--muted) 30%)",
+          "brand": "#f6d5e7",
+          "brand-foreground": "#65334e",
+          "brand-hover": "#efc2dc",
+          "brand-active": "#e9b0d0",
+          "destructive-foreground": "#ffffff",
+          "corner-shape": "superellipse(1.2)",
+          "popover-shadow": "0 0 0 1px color-mix(in oklch, var(--foreground) 7%, transparent), 0 2px 4px -1px oklch(0 0 0 / 0.06), 0 6px 16px -4px oklch(0 0 0 / 0.06)",
+          "subtle-foreground": "color-mix(in oklch, var(--muted-foreground), var(--background) 35%)",
+          "success": "#1f8a4c",
+          "success-foreground": "#ffffff",
+          "warning": "#c2620a",
+          "warning-foreground": "#ffffff",
+          "info": "#2d63d6",
+          "info-foreground": "#ffffff",
+          "success-soft": "color-mix(in oklch, var(--success), white 38%)",
+          "destructive-soft": "color-mix(in oklch, var(--destructive), white 38%)",
+          "field": "var(--background)",
+          "field-border": "var(--input)",
+          "surface-raised": "var(--popover)",
+          "menu": "var(--popover)"
+        },
+        "dark": {
+          "primary-hover": "color-mix(in oklch, var(--primary), white 12%)",
+          "primary-active": "color-mix(in oklch, var(--primary), black 15%)",
+          "secondary-hover": "color-mix(in oklch, var(--secondary), var(--foreground) 6%)",
+          "secondary-active": "color-mix(in oklch, var(--secondary), var(--foreground) 10%)",
+          "destructive-hover": "color-mix(in oklch, var(--destructive), black 12%)",
+          "destructive-active": "color-mix(in oklch, var(--destructive), black 22%)",
+          "disabled": "var(--muted)",
+          "disabled-foreground": "color-mix(in oklch, var(--muted-foreground), var(--muted) 30%)",
+          "destructive-foreground": "color-mix(in oklch, var(--destructive), black 75%)",
+          "popover-shadow": "0 0 0 1px color-mix(in oklch, var(--foreground) 10%, transparent), 0 8px 24px -6px oklch(0 0 0 / 0.3)",
+          "subtle-foreground": "color-mix(in oklch, var(--muted-foreground), var(--background) 22%)",
+          "success": "#5fcf8c",
+          "success-foreground": "#0f2a1a",
+          "warning": "#f0a55a",
+          "warning-foreground": "#2f1a06",
+          "info": "#7aa5ff",
+          "info-foreground": "#0d1a33",
+          "success-soft": "var(--success)",
+          "destructive-soft": "var(--destructive)",
+          "field": "var(--card)",
+          "field-border": "var(--border)",
+          "surface-raised": "color-mix(in oklch, var(--card), var(--foreground) 8%)",
+          "menu": "color-mix(in srgb, var(--foreground) 5%, var(--background))"
+        }
+      }
+    },
+    {
+      "name": "theme",
+      "type": "registry:theme",
+      "title": "Morphin theme",
+      "description": "The Morphin palette for light and dark mode: warm neutrals and plum focus rings. Hover, pressed and brand colors come from @morphin/tokens.",
+      "registryDependencies": [
+        "@morphin/tokens"
+      ],
+      "cssVars": {
+        "theme": {
+          "color-background": "var(--background)",
+          "color-foreground": "var(--foreground)",
+          "color-card": "var(--card)",
+          "color-card-foreground": "var(--card-foreground)",
+          "color-popover": "var(--popover)",
+          "color-popover-foreground": "var(--popover-foreground)",
+          "color-primary": "var(--primary)",
+          "color-primary-foreground": "var(--primary-foreground)",
+          "color-secondary": "var(--secondary)",
+          "color-secondary-foreground": "var(--secondary-foreground)",
+          "color-muted": "var(--muted)",
+          "color-muted-foreground": "var(--muted-foreground)",
+          "color-accent": "var(--accent)",
+          "color-accent-foreground": "var(--accent-foreground)",
+          "color-destructive": "var(--destructive)",
+          "color-border": "var(--border)",
+          "color-input": "var(--input)",
+          "color-ring": "var(--ring)"
+        },
+        "light": {
+          "background": "#ffffff",
+          "foreground": "#292927",
+          "card": "#f7f7f5",
+          "card-foreground": "#292927",
+          "popover": "#ffffff",
+          "popover-foreground": "#292927",
+          "primary": "#242422",
+          "primary-foreground": "#ffffff",
+          "secondary": "#f0f0ed",
+          "secondary-foreground": "#292927",
+          "muted": "#f7f7f5",
+          "muted-foreground": "#6b6b64",
+          "accent": "#f0f0ed",
+          "accent-foreground": "#292927",
+          "destructive": "#b52c3a",
+          "border": "#deded8",
+          "input": "#deded8",
+          "ring": "#855b99"
+        },
+        "dark": {
+          "background": "#000000",
+          "foreground": "#ffffff",
+          "card": "#171717",
+          "card-foreground": "#ffffff",
+          "popover": "#171717",
+          "popover-foreground": "#ffffff",
+          "primary": "#f5f5f5",
+          "primary-foreground": "#000000",
+          "secondary": "#1f1f1f",
+          "secondary-foreground": "#ffffff",
+          "muted": "#171717",
+          "muted-foreground": "#a1a1a1",
+          "accent": "#262626",
+          "accent-foreground": "#ffffff",
+          "destructive": "#ee818c",
+          "border": "#242424",
+          "input": "#2e2e2e",
+          "ring": "#e6b5d1"
+        }
+      }
+    },
+    {
+      "name": "typography",
+      "type": "registry:item",
+      "title": "Morphin typography",
+      "description": "The Morphin type scale on the standard Tailwind sizes (text-2xs to text-6xl): sizes, line heights and letter spacing. Pair with font-medium for labels and headings.",
+      "cssVars": {
+        "theme": {
+          "text-xs": "0.75rem",
+          "text-xs--line-height": "1rem",
+          "text-xs--letter-spacing": "0em",
+          "text-sm": "0.875rem",
+          "text-sm--line-height": "1.25rem",
+          "text-sm--letter-spacing": "-0.006em",
+          "text-base": "1rem",
+          "text-base--line-height": "1.5rem",
+          "text-base--letter-spacing": "-0.011em",
+          "text-lg": "1.125rem",
+          "text-lg--line-height": "1.5rem",
+          "text-lg--letter-spacing": "-0.015em",
+          "text-xl": "1.25rem",
+          "text-xl--line-height": "1.75rem",
+          "text-xl--letter-spacing": "0em",
+          "text-2xl": "1.5rem",
+          "text-2xl--line-height": "2rem",
+          "text-2xl--letter-spacing": "0em",
+          "text-3xl": "2rem",
+          "text-3xl--line-height": "2.5rem",
+          "text-3xl--letter-spacing": "-0.005em",
+          "text-4xl": "2.5rem",
+          "text-4xl--line-height": "3rem",
+          "text-4xl--letter-spacing": "-0.01em",
+          "text-5xl": "3rem",
+          "text-5xl--line-height": "3.5rem",
+          "text-5xl--letter-spacing": "-0.01em",
+          "text-6xl": "3.5rem",
+          "text-6xl--line-height": "4rem",
+          "text-6xl--letter-spacing": "-0.01em"
+        }
+      }
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Six variants, four sizes, icons, loading states and animated content changes.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "class-variance-authority@^0.7.1",
+        "gsap@^3.13.0",
+        "loading-dev@^0.3.5"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/motion",
+        "@morphin/sound",
+        "@morphin/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/button-variants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/button-content.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown",
+      "type": "registry:ui",
+      "title": "Dropdown",
+      "description": "A menu with a sliding highlight, checked items, submenus, segmented rows and icon chips.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "class-variance-authority@^0.7.1",
+        "gsap@^3.13.0",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/button",
+        "@morphin/motion",
+        "@morphin/sound",
+        "@morphin/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/dropdown.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/dropdown-variants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/dropdown-highlight.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "A select built on Base UI Select, styled like the button and the dropdown: a form control with a sliding highlight, groups, icons and descriptions.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/button",
+        "@morphin/dropdown",
+        "@morphin/motion",
+        "@morphin/sound",
+        "@morphin/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/select.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/select-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button Group",
+      "description": "Buttons joined into one control with a shared outline: filters, view switches and toolbars.",
+      "registryDependencies": [
+        "utils",
+        "@morphin/button",
+        "@morphin/sound"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "split-button",
+      "type": "registry:ui",
+      "title": "Split Button",
+      "description": "A main action and an arrow that opens a menu on hover or click, joined into one pill.",
+      "registryDependencies": [
+        "utils",
+        "@morphin/button",
+        "@morphin/dropdown",
+        "@morphin/motion"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/split-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "link-button",
+      "type": "registry:ui",
+      "title": "Link Button",
+      "description": "An inline text action that renders a link or a button, with underline on hover, sizes and icons.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/sound",
+        "@morphin/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/link-button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/link-button-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "A small pill for counts, statuses and labels, with neutral, primary, outline, brand and status variants, three sizes, a dot and icons.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/badge.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/badge-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chip",
+      "type": "registry:ui",
+      "title": "Chip",
+      "description": "A roomy pill for tags, statuses and filters: filled or outline, three sizes, a shimmering label, icons, and a toggle, button or link when it is given a handler, `selected` or an href. ChipGroup joins two into a pair.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "class-variance-authority@^0.7.1",
+        "gsap@^3.13.0"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/motion",
+        "@morphin/sound",
+        "@morphin/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/chip.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/chip-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "A person or a team as an image with initials behind it, a status dot, and a group that overlaps avatars with a +N count.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "class-variance-authority@^0.7.1",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/tokens",
+        "@morphin/motion"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/avatar.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/avatar-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "A surface for grouped content with header, content, footer and media parts, filled or outlined, as a link or a button.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/tokens",
+        "@morphin/motion"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/card-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "announcement",
+      "type": "registry:ui",
+      "title": "Announcement",
+      "description": "A compact card for a sidebar footer or a corner of the page: an icon, a title, a description, an action and a dismiss button, with an animated close.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "gsap@^3.13.0",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/button",
+        "@morphin/card",
+        "@morphin/motion",
+        "@morphin/sound",
+        "@morphin/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/announcement.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/announcement-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "action-card",
+      "type": "registry:ui",
+      "title": "Action Card",
+      "description": "A small 116 × 128 card that is one action: a preview tile (icon, image or video) with a label, as a link or a button, with an active state for filters and navigation.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "class-variance-authority@^0.7.1",
+        "gsap@^3.13.0"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/motion",
+        "@morphin/sound"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/action-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/action-card-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "action-card-menu",
+      "type": "registry:ui",
+      "title": "Action Card Menu",
+      "description": "An action card that opens into a menu in its own place: the card morphs into the popup, its title and icon travel into the header and the rows follow, all with GSAP.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "gsap@^3.13.0"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/motion",
+        "@morphin/action-card",
+        "@morphin/dropdown"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/action-card-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Stacked notifications on Base UI Toast: loading, success and error states, hover to expand, swipe to dismiss, promise helper. The animated state effects (pulse, glow, shake, text morph) are in the Pro item toast-pro.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "class-variance-authority@^0.7.1",
+        "gsap@^3.13.0",
+        "loading-dev@^0.3.5",
+        "border-beam@^1.4.1",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/motion",
+        "@morphin/sound",
+        "@morphin/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/toast.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/toast-variants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/toast-effects.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Accessible labels, descriptions and validation shared by text controls.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/field.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/text-field-variants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/text-field-feedback.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Single-line text fields with three sizes, decorative icons and native form behavior.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/field",
+        "@morphin/sound"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Multiline text fields with three sizes, native resizing and bounded automatic height.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/field",
+        "@morphin/sound"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "A box that fills, then draws its tick, with labels, an indeterminate dash and a group with a select-all parent.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "class-variance-authority@^0.7.1",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/tokens",
+        "@morphin/motion",
+        "@morphin/sound"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/checkbox.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/checkbox-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio",
+      "type": "registry:ui",
+      "title": "Radio",
+      "description": "A round choice that fills and shows a dot, in a group with arrow-key navigation, labels and descriptions.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/tokens",
+        "@morphin/motion",
+        "@morphin/sound"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/radio.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/radio-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Base UI switch with three sizes, labels, descriptions, thumb icons, groups and a GSAP toggle bounce.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "class-variance-authority@^0.7.1",
+        "gsap@^3.13.0"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/motion",
+        "@morphin/sound",
+        "@morphin/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/switch.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/switch-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Base UI slider with a label, a formatted value that rolls as it changes, ranges, vertical orientation and composable parts.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "class-variance-authority@^0.7.1",
+        "gsap@^3.13.0"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/motion",
+        "@morphin/sound",
+        "@morphin/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/slider.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/slider-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "modal",
+      "type": "registry:ui",
+      "title": "Modal",
+      "description": "Base UI dialog with sizes, placements, backdrops, inside or outside scrolling and a scale-up open with a softer close.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "class-variance-authority@^0.7.1",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/button",
+        "@morphin/motion",
+        "@morphin/sound",
+        "@morphin/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/modal.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/modal-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Base UI tabs with a primary pill and a secondary underline that slide between tabs, three sizes, vertical layout, overflow chevrons, separators and a fading panel.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "class-variance-authority@^0.7.1",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/motion",
+        "@morphin/sound",
+        "@morphin/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/tabs.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/tabs-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Base UI accordion with ghost rows or card surfaces, two sizes, a panel that eases its height open while the content fades in, and a chevron that turns over.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "class-variance-authority@^0.7.1",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/motion",
+        "@morphin/sound",
+        "@morphin/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/accordion.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/accordion-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "Any loading-dev spinner (Atom by default) that inherits color, takes named sizes and pauses under reduced motion.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "loading-dev@^0.3.5"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/motion"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "An ASCII skeleton for loading content, and a reveal that decodes the real content into place when it arrives. Built on ascii-reveal (MIT).",
+      "dependencies": [
+        "ascii-reveal@github:quanhoangindex/ascii-reveal#7339882106c2a3b771c44670344b448f5c5a674a"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/motion"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "A month grid on react-day-picker with single, multiple and range selection, round days in the signature shape and a month change that slides and cross-blurs.",
+      "dependencies": [
+        "react-day-picker@^10.0.2",
+        "class-variance-authority@^0.7.1",
+        "gsap@^3.13.0",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/button",
+        "@morphin/motion",
+        "@morphin/sound",
+        "@morphin/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/calendar.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/calendar-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date picker",
+      "description": "A field-like button that opens a Calendar in a Base UI popover, for a date or a date range, with locale formatting and a form value.",
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "react-day-picker@^10.0.2",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/calendar",
+        "@morphin/select",
+        "@morphin/dropdown",
+        "@morphin/motion",
+        "@morphin/sound",
+        "@morphin/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}
