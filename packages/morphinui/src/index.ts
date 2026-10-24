@@ -23,7 +23,7 @@ Usage
 Commands
   init   Set up shadcn (components.json, utils) and the @morphin registry. --theme also installs the Morphin palette and type scale.
   add    Install components with their dependencies. Sets the project up first when it is not.
-  list   Show every component in the registry (and your Pro components when you are logged in).
+  list   Show every component in the registry (and your Max components when you are logged in).
   login  Sign in with your morphin.dev account in the browser, so Max components (names ending in -pro, such as toast-pro; part of the Lifetime plan) can be added.
   whoami Show the signed-in account and its plan: Free, Pro or Max.
   logout Forget the saved token.
@@ -68,7 +68,13 @@ async function ensureRegistry(cwd: string) {
 async function ensureProject(cwd: string, yes: boolean) {
   if (!existsSync(join(cwd, 'components.json'))) {
     console.log('No components.json found: setting the project up with shadcn first.\n');
-    await shadcn(['init', ...(yes ? ['--yes'] : []), '--cwd', cwd], cwd);
+    // Morphin is built on Base UI, so shadcn's library and preset questions have one answer (the preset only
+    // seeds the stylesheet; `--theme` replaces it). Without these flags `shadcn init` asks both even with `--yes`.
+    await shadcn(['init', ...(yes ? ['--yes'] : []), '--base', 'base', '--preset', 'nova', '--cwd', cwd], cwd);
+    // shadcn exits 0 when a prompt is cancelled or has no terminal to answer it.
+    if (!existsSync(join(cwd, 'components.json'))) {
+      throw new Error('shadcn did not create components.json. Run `npx shadcn@latest init` in your project first, then retry.');
+    }
   }
   await ensureRegistry(cwd);
 }

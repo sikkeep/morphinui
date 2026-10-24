@@ -10,7 +10,7 @@ npx morphinui@latest list
 
 Components work like [shadcn/ui](https://ui.shadcn.com): the source is copied into your project and you own it. `morphinui` is a thin layer over the shadcn CLI, so it does the same thing as `npx shadcn@latest add @morphin/button`, minus the setup:
 
-1. If the project has no `components.json`, it runs `shadcn init` first (Tailwind CSS v4, `cn` helper, aliases).
+1. If the project has no `components.json`, it runs `shadcn init` first (Tailwind CSS v4, `cn` helper, aliases), with Base UI and no questions asked.
 2. It adds the `@morphin` registry to `components.json`, unless the project already defines one.
 3. It runs `shadcn add @morphin/<name>`, which installs the files, their npm dependencies, the shared `motion` helper and the Morphin tokens.
 
@@ -19,7 +19,7 @@ Components work like [shadcn/ui](https://ui.shadcn.com): the source is copied in
 | Command | What it does |
 | --- | --- |
 | `init [--theme]` | Sets up shadcn and the `@morphin` registry. `--theme` also installs the Morphin palette and type scale (it replaces your current palette). |
-| `add <components...>` | Installs components. `button` and `@morphin/button` mean the same. `--all` adds every component. |
+| `add <components...>` | Installs components. `button` and `@morphin/button` mean the same. `--all` adds every component. Optional sound is separate: `add sound-cuelume` installs the player. |
 | `list` | Shows every component in the registry. |
 
 | Option | |
