@@ -9,12 +9,12 @@ import { gsap } from 'gsap';
 import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button, ButtonLink, IconButton } from '@/registry/morphin/ui/button';
-import { Card, type CardOptions } from '@/registry/morphin/ui/card';
+import { Card, CardMedia, type CardOptions } from '@/registry/morphin/ui/card';
 import { useReducedMotion } from '@/registry/morphin/lib/motion';
 import { soundInput, useSound } from '@/registry/morphin/lib/sound';
 import {
   announcementCardSize, announcementDescriptionClasses, announcementDismissClasses, announcementIconClasses,
-  announcementTitleClasses, type AnnouncementSize,
+  announcementMediaClasses, announcementTitleClasses, type AnnouncementSize,
 } from '@/registry/morphin/ui/announcement-variants';
 
 export { announcementSizes } from '@/registry/morphin/ui/announcement-variants';
@@ -29,6 +29,14 @@ export const announcementMotion = {
 const collapsed = { height: 0, paddingTop: 0, paddingBottom: 0, opacity: 0 } as const;
 
 export interface AnnouncementProps extends Omit<HTMLAttributes<HTMLElement>, 'title'>, Pick<CardOptions, 'variant'> {
+  /**
+   * An image or video across the top of the card, bleeding to its edges (the card's corners round it).
+   * Pass the element itself: `<img src alt="" />` or `<video src muted loop playsInline autoPlay />`. It
+   * fills its box, and a video that autoplays should stay still under `useReducedMotion()`.
+   */
+  media?: ReactNode;
+  /** Classes for the media box, such as `aspect-[2/1]`. It is 16:9 by default. */
+  mediaClassName?: string;
   /** A decorative icon in a soft disc, hidden from assistive technology. */
   icon?: ReactNode;
   title?: ReactNode;
@@ -57,12 +65,12 @@ export interface AnnouncementProps extends Omit<HTMLAttributes<HTMLElement>, 'ti
 }
 
 /**
- * A compact notice built on `Card` with an optional icon, title, description, action and dismiss button.
+ * A compact notice built on `Card` with an optional media, icon, title, description, action and dismiss button.
  * With a title it is a region labelled by that title. Pass `role="status"` when it appears while the page
  * is in use so screen readers announce it.
  */
 export function Announcement({
-  ref, icon, title, description, actionLabel, onAction, actionHref, actionRender, action,
+  ref, media, mediaClassName, icon, title, description, actionLabel, onAction, actionHref, actionRender, action,
   dismissible, dismissLabel = 'Dismiss', open, defaultOpen = true, onOpenChange,
   size = 'md', variant, className, ...props
 }: AnnouncementProps) {
@@ -140,8 +148,9 @@ export function Announcement({
     size={announcementCardSize[size]}
     className={cn('gap-3', className)}
   >
+    {media && <CardMedia bleed data-slot="announcement-media" className={cn(announcementMediaClasses, mediaClassName)}>{media}</CardMedia>}
     {icon && <span data-slot="announcement-icon" aria-hidden="true" className={announcementIconClasses}>{icon}</span>}
-    {(title || description) && <div data-slot="announcement-text" className={cn('flex min-w-0 flex-col gap-0.5', dismissible && !icon && 'pe-7')}>
+    {(title || description) && <div data-slot="announcement-text" className={cn('flex min-w-0 flex-col gap-0.5', dismissible && !icon && !media && 'pe-7')}>
       {title && <p id={titleId} data-slot="announcement-title" className={announcementTitleClasses}>{title}</p>}
       {description && <p data-slot="announcement-description" className={announcementDescriptionClasses}>{description}</p>}
     </div>}
@@ -151,7 +160,8 @@ export function Announcement({
     {dismissible && <IconButton
       data-slot="announcement-dismiss"
       label={dismissLabel}
-      variant="ghost"
+      // Over a picture a ghost button would vanish, so it takes a surface of its own.
+      variant={media ? 'secondary' : 'ghost'}
       size="xs"
       className={announcementDismissClasses}
       onClick={(event) => {

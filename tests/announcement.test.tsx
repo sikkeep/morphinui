@@ -53,6 +53,36 @@ describe('Announcement', () => {
     expect(screen.getByRole('region', { name: 'Small' })).toHaveClass('[--card-padding:12px]', 'border-border');
   });
 
+  it('puts media across the top, bleeding to the card edges, at the caller\'s ratio', () => {
+    motionAllowed();
+    const { container, rerender } = render(
+      <Announcement title="Meet the CLI" description="One command." media={<video data-testid="clip" muted loop playsInline />} dismissible />,
+    );
+    const card = screen.getByRole('region', { name: 'Meet the CLI' });
+    const media = container.querySelector('[data-slot=announcement-media]');
+    expect(media).toHaveAttribute('data-bleed', 'true');
+    expect(media).toHaveClass('aspect-video', 'first:-mt-(--card-padding)');
+    expect(media).toContainElement(screen.getByTestId('clip'));
+    // The media comes first, so the card's clip rounds its top corners.
+    expect(card.firstElementChild).toBe(media);
+
+    rerender(<Announcement title="Meet the CLI" media={<img alt="" src="/clip.png" />} mediaClassName="aspect-[2/1]" />);
+    expect(container.querySelector('[data-slot=announcement-media]')).toHaveClass('aspect-[2/1]');
+    expect(container.querySelector('[data-slot=announcement-media]')).not.toHaveClass('aspect-video');
+  });
+
+  it('gives the dismiss button a surface over media, and drops the title padding it no longer needs', () => {
+    motionAllowed();
+    const { container, rerender } = render(<Announcement title="Plain" dismissible />);
+    expect(container.querySelector('[data-slot=announcement-text]')).toHaveClass('pe-7');
+    const plain = container.querySelector('[data-slot=announcement-dismiss]');
+    expect(plain).toHaveClass('bg-transparent');
+
+    rerender(<Announcement title="Plain" dismissible media={<img alt="" src="/clip.png" />} />);
+    expect(container.querySelector('[data-slot=announcement-text]')).not.toHaveClass('pe-7');
+    expect(container.querySelector('[data-slot=announcement-dismiss]')).toHaveClass('bg-secondary');
+  });
+
   it('runs the action: a button by default, a link with a href or a render', async () => {
     motionAllowed();
     const user = userEvent.setup();

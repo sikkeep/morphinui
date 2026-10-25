@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
-    "ascii-reveal": "github:quanhoangindex/ascii-reveal#7339882106c2a3b771c44670344b448f5c5a674a",
+    "ascii-reveal": "^0.3.0",
     "border-beam": "^1.4.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

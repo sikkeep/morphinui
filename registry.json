@@ -904,7 +904,7 @@
       "title": "Skeleton",
       "description": "An ASCII skeleton for loading content, and a reveal that decodes the real content into place when it arrives. Built on ascii-reveal (MIT).",
       "dependencies": [
-        "ascii-reveal@github:quanhoangindex/ascii-reveal#7339882106c2a3b771c44670344b448f5c5a674a"
+        "ascii-reveal@^0.3.0"
       ],
       "registryDependencies": [
         "utils",

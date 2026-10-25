@@ -1,5 +1,6 @@
 // Copies the built registry (public/r) into the morphin.dev site, which serves it at
-// https://morphin.dev/r/{name}.json. Run `npm run registry:build` first.
+// https://morphin.dev/r/{name}.json, and README.md as the site's `features/docs/content/library.md`, the
+// body of /llms-full.txt. Run `npm run registry:build` first.
 // MORPHIN_SITE_DIR points at the site; it defaults to the sibling cmllia/front checkout.
 import { cp, mkdir, readdir, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
@@ -18,3 +19,8 @@ await rm(target, { recursive: true, force: true });
 await mkdir(target, { recursive: true });
 await cp(source, target, { recursive: true });
 console.log(`Copied ${(await readdir(target)).length} files to ${target}`);
+
+const readme = join(site, 'features/docs/content/library.md');
+await mkdir(join(readme, '..'), { recursive: true });
+await cp(join(root, 'README.md'), readme);
+console.log(`Copied README.md to ${readme}`);

@@ -28,8 +28,6 @@ npx morphinui@latest add dropdown modal slider
 npx morphinui@latest list
 ```
 
-> **Status.** The `morphinui` package and the registry at `morphin.dev/r` go live with the next release of morphin.dev. Until then `npx morphinui@latest` and the `@morphin` registry cannot be reached; this repository holds the CLI's source in [`packages/morphinui`](packages/morphinui/README.md), and the components are shown at [morphin.dev/docs](https://morphin.dev/docs).
-
 `morphinui` is a thin layer over the shadcn CLI. It runs `shadcn init` when the project has no `components.json`, adds the `@morphin` registry, then runs `shadcn add @morphin/<name>`. Add `--theme` for the Morphin palette and type scale, `--all` for every component. `npm`, `pnpm`, `yarn` and `bun` all work; see [`packages/morphinui`](packages/morphinui/README.md).
 
 ### With the shadcn CLI
@@ -476,7 +474,7 @@ import { Announcement } from '@/components/ui/announcement';
 />
 ```
 
-A compact card for a sidebar footer or a corner of the page, in the signature shape (it is a `Card`, so the superellipse corner and the card colors come with it). Every part shows when its prop is given, so a card can be a title and an action, or a title and a description that can be closed: `icon` (a soft disc at the top left, hidden from assistive technology), `title`, `description`, an action and `dismissible`. The action is a full-width secondary button: give it `actionLabel` and `onAction`, make it a link with `actionHref` or a framework link with `actionRender`, or replace it with anything through `action`. `size="sm"` is the tight 12 px card and `md` (default) the 16 px one; `variant="filled" | "outline"` is the card's. A card with a title is a region named by it; give one that appears while the person is using the page `role="status"` so a screen reader announces it. Dismissing collapses the card, so what sits below it glides up (GSAP, 300 ms) and then it leaves the tree; opening it again opens it up from nothing; the first render never animates. Under reduced motion it appears and goes at once. `dismissLabel` names the close button ("Dismiss"). Control it with `open` and `onOpenChange`, or let it manage itself with `defaultOpen`; remember a dismissal yourself (the card does not touch storage). Stable slots: `announcement`, `announcement-icon`, `announcement-text`, `announcement-title`, `announcement-description`, `announcement-action`, `announcement-dismiss`.
+A compact card for a sidebar footer or a corner of the page, in the signature shape (it is a `Card`, so the superellipse corner and the card colors come with it). Every part shows when its prop is given, so a card can be a title and an action, or a title and a description that can be closed: `media`, `icon` (a soft disc at the top left, hidden from assistive technology), `title`, `description`, an action and `dismissible`. `media` is an image or a video across the top of the card, bleeding to its edges so the card's corners round it: pass the element itself (`<img alt="" />`, or `<video muted loop playsInline autoPlay />`), which fills a 16:9 box unless `mediaClassName` sets another ratio (`aspect-[2/1]`). A video that autoplays should stay still under reduced motion (read `useReducedMotion()` and leave `autoPlay` off), and over a picture the close button turns into a secondary button so it stays visible. The action is a full-width secondary button: give it `actionLabel` and `onAction`, make it a link with `actionHref` or a framework link with `actionRender`, or replace it with anything through `action`. `size="sm"` is the tight 12 px card and `md` (default) the 16 px one; `variant="filled" | "outline"` is the card's. A card with a title is a region named by it; give one that appears while the person is using the page `role="status"` so a screen reader announces it. Dismissing collapses the card, so what sits below it glides up (GSAP, 300 ms) and then it leaves the tree; opening it again opens it up from nothing; the first render never animates. Under reduced motion it appears and goes at once. `dismissLabel` names the close button ("Dismiss"). Control it with `open` and `onOpenChange`, or let it manage itself with `defaultOpen`; remember a dismissal yourself (the card does not touch storage). Stable slots: `announcement`, `announcement-media`, `announcement-icon`, `announcement-text`, `announcement-title`, `announcement-description`, `announcement-action`, `announcement-dismiss`.
 
 ## Action card
 
@@ -627,6 +625,7 @@ Free components are MIT and public. Max adds extra polish on top of them (Compon
 | Item | Adds to | What it does |
 | --- | --- | --- |
 | `toast-pro` | `@morphin/toast` | The success and error story: badge swell, drawn check or cross, a pulse wave that nudges the words, an edge glow, a shake on failure and a word-level text morph |
+| `split-bar-pro` | `chart-pro` | One bar that adds up to 100%: pointing at a segment widens it and shows its numbers, the legend switches segments off and the rest stretch to fill the bar, small segments are labelled beneath on thin lines |
 
 ```bash
 npx morphinui@latest login      # signs in with your morphin.dev account in the browser
@@ -786,7 +785,7 @@ A skeleton drawn in glyphs, and the hand-over to the real content. `Skeleton`'s 
 
 `SkeletonReveal` wraps the content and follows `loading`. While it is `true` the skeleton is left alone; when it turns `false` the content that replaced it decodes into place through a character grid in about 400 ms. The content stays in the DOM in its real place (no layout shift) and screen readers read it the whole time. Options: `preset` (`decode`, `dither`, `terminal`, `blueprint`), `duration` (`fast` for data, `cinematic` for heroes), `speed`, `origin` (where the wave starts), `selector`, `mascot` (an ASCII mascot instead of the shimmer when there is no skeleton), `revealOnMount` (default `false`: the reveal follows `loading`), `lazy`, `onRevealComplete`. A ref gives `reveal()` and `hide()` to replay it from code. Mark cards `data-ascii="surface"`, buttons and chips `data-ascii="fade"`, and anything that must stay put `data-ascii="skip"`. The glyphs take `--muted-foreground` and the accent `--foreground`; set `--ascii-skeleton`, `--ascii-accent` or `--ascii-font` to change them. Under reduced motion (the system or a `MotionProvider`) the sweep stops and content appears at once.
 
-The effect is [ascii-reveal](https://github.com/quanhoangindex/ascii-reveal) by Quan Hoang (MIT), added as a dependency and not copied. It is not on npm yet, so the item installs it from GitHub, pinned to a commit; switch the spec to a version once it is published. Stable slots: `skeleton`, `skeleton-reveal`.
+The effect is [ascii-reveal](https://github.com/quanhoangindex/ascii-reveal) by Quan Hoang (MIT), added as a dependency and not copied. The item installs it from npm (`ascii-reveal@^0.3.0`). Stable slots: `skeleton`, `skeleton-reveal`.
 
 ## Motion and accessibility
 

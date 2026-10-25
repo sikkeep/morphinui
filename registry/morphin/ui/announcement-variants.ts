@@ -12,6 +12,9 @@ export const announcementIconClasses = cn(
   'bg-secondary text-foreground [&_svg]:pointer-events-none [&_svg:not([class*=size-])]:size-4',
 );
 
+/** The media box across the top of the card: 16:9 unless `mediaClassName` sets another ratio. */
+export const announcementMediaClasses = 'aspect-video';
+
 export const announcementTitleClasses = 'text-sm font-medium leading-snug tracking-tight text-foreground';
 export const announcementDescriptionClasses = 'text-xs leading-relaxed text-muted-foreground';
 

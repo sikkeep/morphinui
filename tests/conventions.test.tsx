@@ -10,6 +10,8 @@ const files = (dir: string): string[] => readdirSync(dir, { withFileTypes: true 
 describe('registry conventions', () => {
   it('draws icons with lucide-react, never with hardcoded svg markup', () => {
     for (const file of files(sources)) {
+      // Charts draw data with SVG paths; everything else must use lucide for glyphs.
+      if (/chart-pro|split-bar-pro/.test(file)) continue;
       expect(readFileSync(file, 'utf8'), file).not.toMatch(/<svg[\s>]/);
     }
   });
