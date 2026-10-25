@@ -847,10 +847,9 @@ npm install
 npm test                # component behavior
 npm run build           # typecheck and registry JSON
 npm run test:registry   # install the registry into fresh shadcn projects with the real CLI
-npm run site:install    # install every component into the morphin.dev site (../cmllia/front by default)
 ```
 
-The sources live in `registry/morphin/` and import each other through `@/registry/morphin/...`; the shadcn CLI rewrites those imports to the project's aliases. `registry.json` lists the items, and `npm run registry:build` writes one JSON file per item to `public/r/`. There is no preview app here: the components are shown on [morphin.dev/docs](https://morphin.dev/docs). `npm run site:install` installs this checkout into the site with the real shadcn CLI, so a change can be seen there before it is published.
+The sources live in `registry/morphin/` and import each other through `@/registry/morphin/...`; the shadcn CLI rewrites those imports to the project's aliases. `registry.json` lists the items, and `npm run registry:build` writes one JSON file per item to `public/r/`. There is no preview app here: the components are shown on [morphin.dev/docs](https://morphin.dev/docs).
 
 `npm run test:registry` serves `public/r` locally and runs `shadcn add` in a copy of `tests/fixtures/registry-consumer` (a Vite project right after `shadcn init`). It checks the installed files and imports, the CSS variables, a type-check, a production build and server rendering, once with `@morphin/theme` and once on top of the default shadcn theme.
 

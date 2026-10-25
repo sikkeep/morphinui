@@ -19,8 +19,6 @@
   "scripts": {
     "build": "npm run typecheck && npm run registry:build",
     "registry:build": "shadcn build -o public/r",
-    "registry:sync": "node --import tsx scripts/registry-sync.ts",
-    "site:install": "node --import tsx scripts/site-install.ts",
     "cli:build": "npm run build --prefix packages/morphinui",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
