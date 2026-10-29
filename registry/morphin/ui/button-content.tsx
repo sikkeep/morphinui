@@ -63,7 +63,8 @@ function paddingOf(button: HTMLElement | null): Padding {
 
 /** The content's layout width, with its fraction (`offsetWidth` rounds it, so the box would snap by up to half a pixel at the end). Unlike client rects, it ignores the press scale. */
 function widthOf(node: HTMLElement) {
-  return parseFloat(getComputedStyle(node).width) || node.offsetWidth;
+  const fractional = parseFloat(getComputedStyle(node).width);
+  return fractional || node.offsetWidth;
 }
 
 /** Layout offset from the start of `scope`; unlike client rects, it ignores the press scale. */

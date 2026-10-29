@@ -2,7 +2,8 @@
 
 import type { ComponentProps } from 'react';
 import { Dialog } from '@base-ui/react/dialog';
-import { X } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Cancel01Icon } from '@hugeicons/core-free-icons';
 import { cn } from '@/lib/utils';
 import { useReducedMotion } from '@/registry/morphin/lib/motion';
 import { useSound } from '@/registry/morphin/lib/sound';
@@ -101,7 +102,7 @@ export function ModalContent({
 export function ModalCloseButton({ label = 'Close', className }: { label?: string; className?: string }) {
   return <Dialog.Close
     data-slot="modal-close-button"
-    render={<IconButton label={label} variant="ghost" size="sm" className={cn(modalCloseButtonClasses, className)}><X strokeWidth={2.2} /></IconButton>}
+    render={<IconButton label={label} variant="ghost" size="sm" className={cn(modalCloseButtonClasses, className)}><HugeiconsIcon icon={Cancel01Icon} aria-hidden="true" strokeWidth={2.2} /></IconButton>}
   />;
 }
 

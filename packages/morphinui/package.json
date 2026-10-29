@@ -1,6 +1,6 @@
 {
   "name": "morphinui",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Add Morphin UI components to your project: npx morphinui@latest add button",
   "license": "MIT",
   "type": "module",
@@ -22,7 +22,15 @@
     "tailwindcss",
     "base-ui",
     "cli",
-    "components"
+    "components",
+    "shadcn-registry",
+    "ui-components",
+    "react-components",
+    "typescript",
+    "animation",
+    "gsap",
+    "dark-mode",
+    "ai-ui"
   ],
   "homepage": "https://morphin.dev",
   "repository": {

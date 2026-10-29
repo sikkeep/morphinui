@@ -104,7 +104,7 @@ export const accordionPanelClasses = [
 /** The panel's text. It fades in from a 2 px blur as the panel opens and fades out a little faster. */
 export const accordionContentVariants = cva([
   'min-w-0 text-sm text-muted-foreground',
-  'transition-[opacity,filter] duration-250 ease-[cubic-bezier(0.22,1,0.36,1)]',
+  'duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] transition-[opacity,filter]',
   'group-data-starting-style/accordion-panel:opacity-0 group-data-starting-style/accordion-panel:blur-[2px]',
   'group-data-ending-style/accordion-panel:opacity-0 group-data-ending-style/accordion-panel:blur-[2px] group-data-ending-style/accordion-panel:duration-150',
   reducedMotion,

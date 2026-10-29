@@ -44,8 +44,8 @@ describe('Checkbox', () => {
     const minus = container.querySelector('[data-icon=minus]') as SVGElement;
     expect(check).toBeInTheDocument();
     expect(minus).toBeInTheDocument();
-    expect(check.style.getPropertyValue('--check-len')).toBe('23');
-    expect(minus.style.getPropertyValue('--check-len')).toBe('14');
+    expect(check.style.getPropertyValue('--check-len')).toBe('21');
+    expect(minus.style.getPropertyValue('--check-len')).toBe('16');
     expect(check).toHaveAttribute('aria-hidden', 'true');
     const box = screen.getByRole('checkbox');
     // The 150 ms box fill, the 350 ms draw and the 150 ms undraw.

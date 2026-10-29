@@ -4,7 +4,8 @@ import { createContext, use, useId, type CSSProperties, type ReactNode, type Ref
 import { Checkbox as BaseCheckbox } from '@base-ui/react/checkbox';
 import { CheckboxGroup as BaseCheckboxGroup } from '@base-ui/react/checkbox-group';
 import { Fieldset } from '@base-ui/react/fieldset';
-import { Check, Minus } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { MinusSignIcon, Tick02Icon } from '@hugeicons/core-free-icons';
 import { cn } from '@/lib/utils';
 import { useReducedMotion } from '@/registry/morphin/lib/motion';
 import { useSound } from '@/registry/morphin/lib/sound';
@@ -66,8 +67,8 @@ export function Checkbox({
     className={cn(checkboxVariants({ size: resolvedSize }), !hasText && className)}
   >
     <BaseCheckbox.Indicator data-slot="checkbox-indicator" keepMounted className={checkboxIndicatorClasses}>
-      <Check data-icon="check" strokeWidth={3} aria-hidden="true" style={{ '--check-len': checkIconLength } as CSSProperties} />
-      <Minus data-icon="minus" strokeWidth={3} aria-hidden="true" style={{ '--check-len': minusIconLength } as CSSProperties} />
+      <HugeiconsIcon icon={Tick02Icon} data-icon="check" strokeWidth={3} aria-hidden="true" style={{ '--check-len': checkIconLength } as CSSProperties} />
+      <HugeiconsIcon icon={MinusSignIcon} data-icon="minus" strokeWidth={3} aria-hidden="true" style={{ '--check-len': minusIconLength } as CSSProperties} />
     </BaseCheckbox.Indicator>
   </BaseCheckbox.Root>;
   if (!hasText) return control;

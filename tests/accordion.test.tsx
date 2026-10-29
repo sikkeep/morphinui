@@ -39,7 +39,7 @@ describe('Accordion', () => {
     const chevron = trigger('Shipping').querySelector('[data-icon="inline-end"]');
     expect(chevron).toHaveAttribute('aria-hidden', 'true');
     expect(chevron).toHaveClass('size-4', 'group-data-panel-open/accordion-trigger:rotate-180');
-    expect(container.querySelector('svg:not([class*="lucide"])')).toBeNull();
+    expect(container.querySelector('svg:not([aria-hidden="true"])')).toBeNull();
   });
 
   it('opens and closes by click, linking the trigger to its panel', async () => {

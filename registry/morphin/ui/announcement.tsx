@@ -6,7 +6,8 @@ import {
 } from 'react';
 import type { useRender } from '@base-ui/react/use-render';
 import { gsap } from 'gsap';
-import { X } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Cancel01Icon } from '@hugeicons/core-free-icons';
 import { cn } from '@/lib/utils';
 import { Button, ButtonLink, IconButton } from '@/registry/morphin/ui/button';
 import { Card, CardMedia, type CardOptions } from '@/registry/morphin/ui/card';
@@ -168,6 +169,6 @@ export function Announcement({
         change(false);
         play('close', { input: soundInput(event), emphasis: 'subtle' });
       }}
-    ><X /></IconButton>}
+    ><HugeiconsIcon icon={Cancel01Icon} strokeWidth={2} aria-hidden="true" /></IconButton>}
   </Card>;
 }

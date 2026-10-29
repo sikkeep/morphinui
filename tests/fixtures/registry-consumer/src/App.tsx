@@ -1,3 +1,6 @@
+import { AiChat } from '@/components/ui/ai-chat';
+import { BarChart } from '@/components/ui/bar-chart';
+import { DataTable, createDataTableColumnHelper } from '@/components/ui/data-table';
 import { useState } from 'react';
 import { Button, IconButton } from '@/components/ui/button';
 import {
@@ -34,6 +37,13 @@ import { MotionProvider } from '@/lib/motion';
 import { SoundProvider } from '@/lib/sound';
 import { cuelumeSound } from '@/lib/sound-cuelume';
 
+type Order = { id: string; customer: string; total: number };
+const orderColumns = createDataTableColumnHelper<Order>();
+const columns = orderColumns.columns([
+  orderColumns.accessor('customer', { header: 'Customer' }),
+  orderColumns.accessor('total', { header: 'Total', meta: { align: 'end' } }),
+]);
+
 /** Everything a project gets from `shadcn add @morphin/theme @morphin/dropdown @morphin/select …`. */
 export function App({ defaultOpen = false }: { defaultOpen?: boolean }) {
   const [view, setView] = useState('grid');
@@ -41,6 +51,9 @@ export function App({ defaultOpen = false }: { defaultOpen?: boolean }) {
     <SoundProvider player={cuelumeSound} enabled={false}>
     <MotionProvider>
       <main className="flex min-h-svh flex-wrap items-center justify-center gap-3 bg-background p-10 text-foreground">
+        <DataTable label="Orders" data={[{ id: 'o1', customer: 'Ada', total: 120 }]} columns={columns} getRowId={row => row.id} search selectable pagination columnsMenu />
+        <AiChat className="w-full max-w-2xl" initialMessages={[{ id: 'm1', from: 'user', text: 'Hi' }, { id: 'm2', from: 'assistant', text: 'Hello!', status: 'done', reasoning: 'Greet back.', thoughtFor: 2 }]} />
+        <BarChart title="Earnings" data={[{ id: "jan", label: "Jan", value: 3000 }]} format={{ style: "currency", currency: "USD" }} />
         <Button>Get started</Button>
         <Button variant="outline">Learn more</Button>
         <Button variant="secondary" loading loadingLabel="Saving">Save</Button>

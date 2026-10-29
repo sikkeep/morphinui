@@ -80,29 +80,29 @@ What gets installed:
 | Item | Files | Notes |
 | --- | --- | --- |
 | `@morphin/button` | `components/ui/button.tsx`, `button-variants.ts`, `button-content.tsx` | |
-| `@morphin/dropdown` | `components/ui/dropdown.tsx`, `dropdown-variants.ts`, `dropdown-highlight.tsx` | Depends on button; uses `lucide-react` |
-| `@morphin/select` | `components/ui/select.tsx`, `select-variants.ts` | Depends on button and dropdown; uses `lucide-react` |
+| `@morphin/dropdown` | `components/ui/dropdown.tsx`, `dropdown-variants.ts`, `dropdown-highlight.tsx` | Depends on button; uses Hugeicons |
+| `@morphin/select` | `components/ui/select.tsx`, `select-variants.ts` | Depends on button and dropdown; uses Hugeicons |
 | `@morphin/button-group` | `components/ui/button-group.tsx` | Depends on button |
 | `@morphin/split-button` | `components/ui/split-button.tsx` | Depends on button, dropdown and motion; a main action with an arrow that opens a menu on hover |
 | `@morphin/link-button` | `components/ui/link-button.tsx`, `link-button-variants.ts` | Standalone |
 | `@morphin/badge` | `components/ui/badge.tsx`, `badge-variants.ts` | Standalone; counts, statuses and labels |
 | `@morphin/chip` | `components/ui/chip.tsx`, `chip-variants.ts` | `@morphin/motion`; tags, statuses and filters, with a shimmering label |
-| `@morphin/avatar` | `components/ui/avatar.tsx`, `avatar-variants.ts` | `@morphin/motion`; Base UI Avatar, with a status dot and a group that overlaps avatars; uses `lucide-react` |
+| `@morphin/avatar` | `components/ui/avatar.tsx`, `avatar-variants.ts` | `@morphin/motion`; Base UI Avatar, with a status dot and a group that overlaps avatars; uses Hugeicons |
 | `@morphin/card` | `components/ui/card.tsx`, `card-variants.ts` | `@morphin/motion`; a surface with header, content, footer and media parts |
-| `@morphin/announcement` | `components/ui/announcement.tsx`, `announcement-variants.ts` | `@morphin/card`, `@morphin/button` and `@morphin/motion`; a compact notice with an icon, text, an action and an animated dismiss; uses `lucide-react` |
+| `@morphin/announcement` | `components/ui/announcement.tsx`, `announcement-variants.ts` | `@morphin/card`, `@morphin/button` and `@morphin/motion`; a compact notice with an icon, text, an action and an animated dismiss; uses Hugeicons |
 | `@morphin/action-card` | `components/ui/action-card.tsx`, `action-card-variants.ts` | `@morphin/motion`; a preview tile (icon, image or video) with a label, as a link or a button |
 | `@morphin/action-card-menu` | `components/ui/action-card-menu.tsx` | `@morphin/action-card`, `@morphin/dropdown`; the card opens into a menu in its place (GSAP) |
-| `@morphin/toast` | `components/ui/toast.tsx`, `toast-variants.ts`, `toast-effects.ts` | Needs `loading-dev`, `border-beam` and `lucide-react`; uses the `success`, `success-soft`, `warning`, `destructive` and `destructive-soft` tokens |
+| `@morphin/toast` | `components/ui/toast.tsx`, `toast-variants.ts`, `toast-effects.ts` | Needs `loading-dev`, `border-beam` and Hugeicons; uses the `success`, `success-soft`, `warning`, `destructive` and `destructive-soft` tokens |
 | `@morphin/input` | `components/ui/input.tsx` | Depends on field; three sizes and decorative icons |
 | `@morphin/textarea` | `components/ui/textarea.tsx` | Depends on field; native and automatic resizing |
-| `@morphin/checkbox` | `components/ui/checkbox.tsx`, `checkbox-variants.ts` | `@morphin/motion`; Base UI Checkbox and CheckboxGroup, the tick draws itself; uses `lucide-react` |
+| `@morphin/checkbox` | `components/ui/checkbox.tsx`, `checkbox-variants.ts` | `@morphin/motion`; Base UI Checkbox and CheckboxGroup, the tick draws itself; uses Hugeicons |
 | `@morphin/radio` | `components/ui/radio.tsx`, `radio-variants.ts` | `@morphin/motion`; Base UI Radio and RadioGroup, the dot scales in |
 | `@morphin/switch` | `components/ui/switch.tsx`, `switch-variants.ts` | Standalone; GSAP toggle bounce |
 | `@morphin/slider` | `components/ui/slider.tsx`, `slider-variants.ts` | Standalone; ranges, vertical orientation, live value |
-| `@morphin/calendar` | `components/ui/calendar.tsx`, `calendar-variants.ts` | Depends on button and motion; a month grid on [react-day-picker](https://daypicker.dev) (single, multiple, range) with a GSAP month change; uses `lucide-react` |
-| `@morphin/date-picker` | `components/ui/date-picker.tsx` | Depends on calendar, select and dropdown; a Base UI Popover with a calendar, for a date or a range; uses `lucide-react` |
+| `@morphin/calendar` | `components/ui/calendar.tsx`, `calendar-variants.ts` | Depends on button and motion; a month grid on [react-day-picker](https://daypicker.dev) (single, multiple, range) with a GSAP month change; uses Hugeicons |
+| `@morphin/date-picker` | `components/ui/date-picker.tsx` | Depends on calendar, select and dropdown; a Base UI Popover with a calendar, for a date or a range; uses Hugeicons |
 | `@morphin/modal` | `components/ui/modal.tsx`, `modal-variants.ts` | Depends on button; sizes, placements, backdrops, scroll modes |
-| `@morphin/tabs` | `components/ui/tabs.tsx`, `tabs-variants.ts` | Primary pill and secondary underline; overflow chevrons; uses `lucide-react` |
+| `@morphin/tabs` | `components/ui/tabs.tsx`, `tabs-variants.ts` | Primary pill and secondary underline; overflow chevrons; uses Hugeicons |
 | `@morphin/spinner` | `components/ui/spinner.tsx` | Any `loading-dev` spinner, Atom by default |
 | `@morphin/skeleton` | `components/ui/skeleton.tsx` | `@morphin/motion`; an ASCII skeleton and the reveal that decodes real content into place, on [ascii-reveal](https://github.com/quanhoangindex/ascii-reveal) (MIT) |
 | `@morphin/field` | `components/ui/field.tsx`, `text-field-variants.ts`, `text-field-feedback.tsx` | Accessible labels, descriptions, errors and shared text-control recipes |
@@ -113,7 +113,7 @@ What gets installed:
 | `@morphin/theme` | CSS variables only | The Morphin palette: warm neutrals for `:root`; for `.dark`, pure black with solid `#171717` cards and popovers |
 | `@morphin/typography` | CSS variables only | The Morphin type scale on the Tailwind sizes |
 
-Icons come from [lucide-react](https://lucide.dev), which the items that draw one (dropdown, select, toast, tabs) install as a dependency; pass your own icons to `leadingIcon`, `icon` and friends as usual.
+Icons come from the free Hugeicons set (Stroke Rounded, MIT): `@hugeicons/react` and `@hugeicons/core-free-icons`, which the items that draw one (dropdown, select, toast, tabs…) install as dependencies. Render one with `<HugeiconsIcon icon={Mail01Icon} />`; pass your own icons, from any set, to `leadingIcon`, `icon` and friends as usual.
 
 The file names match shadcn's own `button.tsx`. If your project already has a shadcn button, the CLI asks before overwriting it.
 
@@ -130,7 +130,7 @@ Components use the shadcn token names, so they follow whatever theme your projec
 | `--subtle-foreground` | a third text level, `--muted-foreground` mixed with `--background` |
 | `--success`, `--warning`, `--info` and their `-foreground` | status colors, with dark-mode values |
 | `--destructive-hover`, `--destructive-active`, `--destructive-foreground` | derived from `--destructive` |
-| `--brand`, `--brand-foreground`, `--brand-hover`, `--brand-active` | Morphin pink, used by `variant="accent"` |
+| `--brand`, `--brand-foreground`, `--brand-hover`, `--brand-active` | Morphin blue, used by `variant="accent"` |
 | `--disabled`, `--disabled-foreground` | derived from `--muted` |
 | `--corner-shape` | `superellipse(1.2)` |
 | `--popover-shadow` | the menu shadow, utility `shadow-popover` |
@@ -317,12 +317,13 @@ npx shadcn@latest add @morphin/input @morphin/textarea
 import { Field, FieldGroup, FieldLabel, FieldDescription, FieldError } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Mail } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Mail01Icon } from '@hugeicons/core-free-icons';
 
 <FieldGroup>
   <Field name="email">
     <FieldLabel>Email</FieldLabel>
-    <Input type="email" required placeholder="you@example.com" leadingIcon={<Mail strokeWidth={1.8} />} />
+    <Input type="email" required placeholder="you@example.com" leadingIcon={<HugeiconsIcon icon={Mail01Icon} strokeWidth={1.8} />} />
     <FieldDescription>Use your work email.</FieldDescription>
     <FieldError match="typeMismatch">Enter a valid email.</FieldError>
   </Field>
@@ -335,7 +336,7 @@ import { Mail } from 'lucide-react';
 
 Both controls use the Morphin superellipse shape, semantic shadcn tokens and `size="sm" | "md" | "lg"` (Input heights: 32, 40, 48 px). `Field`, `FieldLabel`, `FieldDescription` and `FieldError` wrap Base UI Field and connect accessible names, hints and validation automatically. `FieldGroup` lays out a group of fields. Fields accept `disabled`, `invalid`, `name` and the other Base UI root props. Use `FieldError match` for an externally controlled error, or a validity key (`valueMissing`, `typeMismatch`, …) for native validation. Standalone controls also work with native labels or `aria-label`.
 
-`Input` wraps Base UI Input. `leadingIcon` / `trailingIcon` are decorative (`aria-hidden`), inherit 16 px icon sizing and preserve explicit SVG `size-*` classes. Use a separate labelled button for interactive actions. `className` lays out the field; `inputClassName` styles the native input. The ref points to the native input. Examples import icons from `lucide-react`; add that dependency when using them.
+`Input` wraps Base UI Input. `leadingIcon` / `trailingIcon` are decorative (`aria-hidden`), inherit 16 px icon sizing and preserve explicit SVG `size-*` classes. Use a separate labelled button for interactive actions. `className` lays out the field; `inputClassName` styles the native input. The ref points to the native input. The example imports a Hugeicons icon; any icon component works.
 
 `Textarea` renders a native textarea through Base UI Field.Control. Its superellipse corners use a 20 px radius cap so growing text stays inside the outline. It defaults to three rows and vertical resizing. `rows` is also the shortest and `maxRows` (default 8) the tallest it gets: the resize grip stops at both. `resize="none"` removes the native handle; `autoResize` takes precedence and grows or shrinks between them, then scrolls. The focus ring follows the same superellipse, 4 px outside the field. It recalculates after text, width, fonts and form resets change. The native resize handle is inset 6 px from the shell, keeping it clear of the rounded border. Height changes are immediate, with no animation. `className` lays out the field; `style` and ref target the textarea. Automatic sizing owns its inline height and overflow while enabled and restores previous values when disabled or unmounted.
 
@@ -497,7 +498,7 @@ import { ActionCardMenu } from '@/components/ui/action-card-menu';
 
 A small card (116 × 128 px; `--action-card-width` and `--action-card-height` change it) that is one action: a white preview tile and a one-line label under it, on the muted surface. It takes the accent on hover and a ring while it is `active`, and it moves on a spring (GSAP, `motionTokens.spring`: stiffness 300, mass 0.8, with about 18% overshoot): it grows 4% under a mouse, sinks to 95% under a press and springs back on release, and pops (a dip to 90%, then the spring) when it becomes `active` or, right after a press on it, stops being so; a card that another card deactivates stays still. Touch gets the press and the pop but no hover growth. Reduced motion (the system, a `MotionProvider` or `reduceMotion`) and `disabled` turn the spring off, leaving the color transitions. Leave about 8 px of room around a row of cards, since a card grows past its box. With `href` or `render` it is a link and `active` sets `aria-current="page"`; without them it is a `<button type="button">`, and passing `active` (`true` or `false`) makes it a toggle with `aria-pressed`, so a row of cards works as a filter; leave `active` out for a card that is only an action. `disabled` on a link drops its `href`, sets `aria-disabled` and cancels the click, so a router link passed through `render` does not navigate either. The label is truncated to one line and names the card; the preview is decorative (`aria-hidden`). `ActionCardMedia` puts an image or a video in the tile (a video is chosen by the file extension or `type="video"`; it is muted, loops, plays inline and stays paused under reduced motion). Stable slots: `action-card`, `action-card-preview`, `action-card-label`, `action-card-media`.
 
-`ActionCardMenu` (`@morphin/action-card-menu`, built on the dropdown) turns the card into a menu where it stands. Its popup is placed over the card; GSAP clips the surface to the card and grows it on a gentle curve, the card's tile and label are gone by the time the rows arrive, the title and icon travel into the menu's header (the icon slides sideways first, so it passes beside the title), and the rows rise one after another with the checked row's highlight (`motionTokens.morph`, about 0.5 s). Closing runs it back into the card, which shows again before focus returns to it. Options are `{ value, label, leadingIcon?, disabled? }`; the card shows the chosen label and is named "Title: label". Pass `preview` (for example `ActionCardMedia`) instead of the default title and icon tile; then the surface and the rows animate and the words do not travel. It takes `value` / `defaultValue` / `onValueChange`, `open` / `defaultOpen` / `onOpenChange`, `modal` (non-modal by default, like `Dropdown`), `portalProps`, `reduceMotion` and `contentClassName`. Reduced motion opens and closes at once. Stable slots: `action-card-menu-trigger`, `action-card-menu`, `action-card-menu-header`.
+`ActionCardMenu` (`@morphin/action-card-menu`, built on the dropdown) turns the card into a menu where it stands. Its popup is placed over the card; GSAP clips the surface to the card and grows it on a gentle curve, the card's tile and label are gone by the time the rows arrive, the title and icon travel into the menu's header (the icon slides sideways first, so it passes beside the title), and the rows rise one after another with the checked row's highlight (`motionTokens.morph`, about 0.5 s). Closing runs it back into the card, which shows again before focus returns to it. The surface grows to the popup's own box with all four corners round and only then reaches past it for the shadow, a menu shorter than the card is held at the card's height while it morphs, and the popup never scrolls or shows a scrollbar during the morph (a classic scrollbar, as on Windows, would take its width for a few frames). Options are `{ value, label, leadingIcon?, disabled? }`; the card shows the chosen label and is named "Title: label". Pass `preview` (for example `ActionCardMedia`) instead of the default title and icon tile; then the surface and the rows animate and the words do not travel. It takes `value` / `defaultValue` / `onValueChange`, `open` / `defaultOpen` / `onOpenChange`, `modal` (non-modal by default, like `Dropdown`), `portalProps`, `reduceMotion` and `contentClassName`. Reduced motion opens and closes at once. Stable slots: `action-card-menu-trigger`, `action-card-menu`, `action-card-menu-header`.
 
 ## Toast
 
@@ -618,6 +619,164 @@ import { Slider } from '@/components/ui/slider';
 
 [Base UI Slider](https://base-ui.com/react/components/slider) with a label and live value on top, then the track, fill and thumbs. An array value renders one thumb per value. `format` takes `Intl.NumberFormat` options (with `locale`); `showValue` defaults to on when there is a `label`, and a function renders the output from the formatted and raw values. Sizes are `sm` (14 px track), `md` (20 px, default) and `lg` (28 px). The look is a thick pill track with a fill of the same color and a pill thumb: a primary pill holding a lighter one, which shrinks to 0.9 (150 ms) while the thumb is dragged. Thumbs stay inside the track (`thumbAlignment="edge"` by default); reduced motion keeps them still. The value is plain tabular text that changes at once: while a thumb is dragged it must read at a glance, so it never animates. Custom `SliderValue` children that are not a string or number are rendered as is. The whole slider dims when disabled. Every Base UI prop works: `value` / `onValueChange` / `onValueCommitted`, `min`, `max`, `step`, `largeStep`, `minStepsBetweenValues`, `orientation`, `disabled`, `name`. Pass `children` to compose `SliderLabel`, `SliderValue`, `SliderControl`, `SliderTrack`, `SliderIndicator` and `SliderThumb` yourself. Stable slots: `slider`, `slider-header`, `slider-label`, `slider-value`, `slider-control`, `slider-track`, `slider-indicator`, `slider-thumb`.
 
+## Bar chart
+
+A compact free single-series chart built with the Morphin Card. Rounded green bars sit on pale tracks, with a summary, an action slot for period controls, compact axis labels, horizontal scrolling and a screen-reader data table. The default is at most 672 px wide with a 176 px plot; `sm` and `lg` use 128 and 240 px plots. No charting library is required.
+
+```sh
+npx morphinui@latest add bar-chart
+```
+
+```tsx
+import { BarChart } from '@/components/ui/bar-chart';
+
+<BarChart
+  title="Earned so far"
+  value={7462}
+  data={[
+    { id: 'jan', label: 'Jan', value: 3200 },
+    { id: 'feb', label: 'Feb', value: 7400 },
+    { id: 'mar', label: 'Mar', value: 9600 },
+  ]}
+  max={12000}
+  ticks={[0, 3000, 5000, 10000]}
+  format={{ style: 'currency', currency: 'USD', maximumFractionDigits: 0 }}
+/>
+```
+
+BarChart uses its own `--bar-chart: #4cd676` color in both themes, independently of the blue brand palette. Pass `action` for controls, `description` for a badge, `size="sm|md|lg"`, and `color` (or a row's `color`) for a CSS color. Stable row ids preserve bars across data updates. Finite, nonnegative values are supported; invalid rows are omitted and an empty dataset shows `emptyLabel`. The upper bound expands to include every value. Pass a numeric `value` to animate the summary as a counter using `format` and `locale`. String values and arbitrary React content render unchanged. `BarChartNumber` is also exported for counters inside a custom badge or summary. Initial rendering is still; updates count from the last drawn value, and assistive technology receives the current exact value immediately. Fine-pointer hover fades a 1 px ring around the filled bar without changing its geometry, softens the other bars and, with a numeric `value`, cross-blurs the header into that bar's name and value (the `description` fades out) until the pointer leaves. Bar corners are capped at 16 px. Zero bars do not show a ring. `scrollLabel`, `categoryLabel` and `valueLabel` localize the accessible chart text. Every animation honors `MotionProvider`, the live system preference and `reduceMotion`.
+
+## Data table
+
+Records people sort, search, filter, select and page through, on [TanStack Table](https://tanstack.com/table) v9 with Morphin's checkbox, input, dropdown, select and buttons. It is a real `<table>` on a card surface (or `variant="plain"`), with rows 36, 44 or 52 px tall (`size="sm|md|lg"`). When the order changes, rows that stay glide to their new place and new rows fade up.
+
+```sh
+npx morphinui@latest add data-table
+```
+
+```tsx
+import { Button } from '@/components/ui/button';
+import { DataTable, DataTableFacetFilter, createDataTableColumnHelper } from '@/components/ui/data-table';
+
+type Invoice = { id: string; customer: string; status: 'paid' | 'due'; amount: number };
+
+const column = createDataTableColumnHelper<Invoice>();
+const columns = column.columns([
+  column.accessor('customer', { header: 'Customer' }),
+  column.accessor('status', { header: 'Status', filterFn: 'oneOf' }),
+  column.accessor('amount', { header: 'Amount', meta: { align: 'end' } }),
+]);
+
+<DataTable
+  label="Invoices"
+  data={invoices}
+  columns={columns}
+  getRowId={invoice => invoice.id}
+  search
+  selectable
+  columnsMenu
+  pagination={{ pageSize: 10 }}
+  toolbar={table => <DataTableFacetFilter table={table} column="status" title="Status"
+    options={[{ value: 'paid', label: 'Paid' }, { value: 'due', label: 'Due' }]} />}
+  selectionActions={(selected, clear) => <Button size="sm" onClick={clear}>Export {selected.length}</Button>}
+/>
+```
+
+Columns are TanStack column definitions; build them with `createDataTableColumnHelper<TData>()` so `meta` (`label`, `align`, `width`, `headerClassName`, `cellClassName`), `sortFn` (`alphanumeric`, `basic`, `datetime`, `text`) and `filterFn` (`includesString`, `equals`, `inNumberRange`, `oneOf`) are typed, and keep `columns` and `data` stable between renders. Give rows a stable `getRowId`: selection and the row motion follow it. A sortable header is a button inside a cell with `aria-sort`; Shift-click adds a column to the sort. `search` filters every text and number column; `DataTableFacetFilter` filters one column by whole values (`filterFn: 'oneOf'`) and counts each. `selectable` adds a checkbox column with select-all for the page and Shift-click ranges (`selectionDisabled` freezes it while rows are being replaced), and `selectionActions` replaces the toolbar while rows are selected (the hidden layer is `inert`). `pagination` adds pages and a rows-per-page select, `maxHeight` a sticky header, `striped` shaded rows, `loading` skeleton rows (`aria-busy`), `empty` and `noResults` your own words. Every state slice (`sorting`, `globalFilter`, `columnFilters`, `rowSelection`, `columnVisibility`, `paginationState`) is controlled when set, with an `on…Change` callback. `manual={{ rowCount }}` is server mode: the table reports sorting, search and paging and leaves the work to you. `labels` translates every word. A polite status line announces the sort and the number of search results. The row motion honors `MotionProvider`, the live system preference and `reduceMotion`.
+
+## Prompt input
+
+A message composer for chat: a form on the field surface with the signature shape, a textarea that grows with the draft, and a toolbar for attachments, a model and effort menu, voice recording and the send button. Enter sends, Shift+Enter adds a line, an Enter that confirms an IME composition does nothing, and Escape stops a reply in flight.
+
+```sh
+npx morphinui@latest add prompt-input
+```
+
+```tsx
+import {
+  PromptInput, PromptInputAttach, PromptInputAttachments, PromptInputModelSelect, promptInputEfforts,
+  PromptInputSubmit, PromptInputTextarea, PromptInputToolbar, PromptInputTools, PromptInputVoice,
+} from '@/components/ui/prompt-input';
+
+<PromptInput status={status} onSubmit={({ text, files }) => send(text, files)} onStop={stop}>
+  <PromptInputAttachments />
+  <PromptInputTextarea placeholder="Ask anything" />
+  <PromptInputToolbar>
+    <PromptInputTools>
+      <PromptInputAttach />
+      <PromptInputModelSelect
+        models={[{ value: 'general', label: 'General', meta: '$2 · $10' }, { value: 'mini', label: 'Mini', meta: '$0.10 · $0.50' }]}
+        efforts={promptInputEfforts}
+        footer="Input · output per 1M tokens."
+      />
+    </PromptInputTools>
+    <PromptInputTools>
+      <PromptInputVoice />
+      <PromptInputSubmit />
+    </PromptInputTools>
+  </PromptInputToolbar>
+</PromptInput>
+```
+
+`PromptInput` is the `<form>` and holds the state: `value` / `defaultValue` / `onValueChange`, `onSubmit({ text, files })` (the composer clears itself afterwards, through `onValueChange` when controlled), `status` (`ready`, `submitted`, `streaming` or `error`; the middle two turn `PromptInputSubmit` into Stop and call `onStop`), `disabled`, `accept` and `maxFiles` (extra or refused files go to `onFilesRejected`). Files come from `PromptInputAttach` (the file picker), a drop on the form or a paste into the text, and `PromptInputAttachments` lists them with a thumbnail or an icon, the size and a remove button. `PromptInputTextarea` takes `rows` (1) and `maxRows` (8) and `submitOnEnter`. `PromptInputModelSelect` takes `models` (`value`, `label`, an optional `shortLabel`, `description`, `meta` such as a price, and `icon`) and opens a Morphin dropdown above the composer: the models with their detail at the row's end and a check on the current one, then, with `efforts`, a segmented Effort row (`promptInputEfforts`: Low, Med, High, XHigh and Max, medium by default; `effort` / `defaultEffort` / `onEffortChange`), then an optional `footer` note. Picking a model closes the menu; the effort row keeps it open. The trigger reads "General High" and is named "Model: General, Effort: High"; below 28rem of composer width it drops the effort. `PromptInputSelect` is a plain toolbar menu for any other choice (`options`, `label`, `collapse` to show only the icon on a narrow composer). An empty composer's send button is filled with the accent gray, since the default disabled fill is the field's own color on dark themes. One line of text is 32 px, the toolbar buttons' height, so a single-row composer with the button beside the text lines up. `PromptInputVoice` records the microphone with MediaRecorder: a toggle with `aria-pressed`, a timer with a breathing dot, and a discard button; the recording is attached as an audio file, or handed to `onRecorded(file)` for your speech-to-text. `useVoiceRecorder` is exported for custom recorders, and `usePromptInput()` for custom parts. The surface's radius is capped at 24 px so a tall draft stays inside the outline.
+
+## Chat
+
+The parts of a conversation. `ChatThread` is the scrolling log (`role="log"`, `aria-busy` while `busy`): it opens at the newest message, follows a reply while it grows, lets go when the reader scrolls up and then offers Jump to latest; a message the user sends always brings it down. `--chat-column` (720 px) caps the conversation's width.
+
+```sh
+npx morphinui@latest add chat
+```
+
+```tsx
+import {
+  ChatMessage, ChatMessageActions, ChatMessageAvatar, ChatMessageBody, ChatMessageContent, ChatMessageCopy,
+  ChatReasoning, ChatThinking, ChatThread,
+} from '@/components/ui/chat';
+
+<ChatThread busy={streaming}>
+  <ChatMessage from="user">
+    <ChatMessageContent>How do I center a div?</ChatMessageContent>
+  </ChatMessage>
+  <ChatMessage from="assistant">
+    <ChatMessageAvatar />
+    <ChatMessageBody>
+      <ChatReasoning duration={3}>Flexbox or grid, both work.</ChatReasoning>
+      <ChatMessageContent>Give the parent display: grid and place-items: center.</ChatMessageContent>
+      <ChatMessageActions><ChatMessageCopy text="…" /></ChatMessageActions>
+    </ChatMessageBody>
+  </ChatMessage>
+</ChatThread>
+```
+
+`ChatMessage from="user"` is a bubble at the end; `from="assistant"` is unboxed beside a `ChatMessageAvatar` (Sparkles unless you pass an icon or an image). Each message is an `article` named "You" or "Assistant" (`name` changes it). Inside a thread, a message added after the first render rises 8 px and sharpens from a 2 px blur (`chatMotion`, 300 ms); the messages a thread opens with stay still. `ChatMessageContent` keeps line breaks; pass rendered Markdown as its children if you have it. `ChatMessageActions` show on hover and focus, always on touch screens, or always with `reveal="always"`; `ChatMessageAction` is a small ghost icon button (pass `aria-pressed` for feedback toggles) and `ChatMessageCopy` copies `text` and shows a check for a moment. `ChatThinking` is a spinner and a shimmering "Thinking" (`role="status"`), `ChatReasoning` folds the model's reasoning behind "Thought for 4s" (a Base UI Collapsible; `streaming` shimmers "Thinking"), `ChatMessageError` is an alert with an `action` slot for Retry, and `ChatShimmer` is the shimmering text on its own. Every animation honors `MotionProvider` and the live system preference.
+
+## AI chat
+
+A block: a complete assistant chat on a Card, made of Chat and Prompt Input. A header with the conversation's title and New chat, a greeting with suggestions, the thread with thinking, reasoning, copy, regenerate and feedback, a Stopped note or an error with Retry, and the composer with attachments, voice and a model menu. It streams demo replies until you connect a model.
+
+```sh
+npx morphinui@latest add ai-chat
+```
+
+```tsx
+import { AiChat, type AiChatRespond } from '@/components/ui/ai-chat';
+
+const respond: AiChatRespond = async function* ({ messages, model, files, signal }) {
+  const response = await fetch('/api/chat', { method: 'POST', body: JSON.stringify({ messages, model }), signal });
+  const reader = response.body!.pipeThrough(new TextDecoderStream()).getReader();
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) return;
+    yield value;
+  }
+};
+
+<AiChat respond={respond} className="h-[720px]" />
+```
+
+`respond({ messages, model, effort, files, signal })` answers the last user message: yield strings for answer text and `{ type: 'reasoning', delta }` for reasoning (an async generator), or return a promise of the whole reply. `effort` is the composer's effort (`low`, `medium`, `high`, `xhigh` or `max`); map it to your provider's reasoning setting. A thrown error shows the error with Retry; Stop, New chat and unmounting abort `signal`. `demoRespond` is the default. Other props: `title`, `greeting`, `description`, `suggestions` (`label`, `prompt`, `icon`), `models` (an empty list hides the menu; the defaults General, Mini, Code and Vision with sample prices are stand-ins for your own), `defaultModel`, `onModelChange`, `efforts`, `defaultEffort` (medium) and `onEffortChange` (the segmented row in the model menu; an empty list leaves it out), `modelNote` (the line under the menu, `null` hides it), `initialMessages`, `onFeedback(message, 'up' | 'down' | undefined)`, `onNewChat`, `renderText(text, message)` for a Markdown renderer, `placeholder`, `disclaimer` (`null` hides it), `accept`, `attachments` and `voice`. The card is 640 px tall (`--chat-height`); size it with a class.
+
 ## Max
 
 Free components are MIT and public. Max adds extra polish on top of them (Components Max) and page templates, delivered the same way (the source is copied into your project and you own it) but through the `morphinui` CLI, from a private registry. Max comes with the Lifetime plan on [morphin.dev](https://morphin.dev/pricing), together with everything in PRO. The items keep their original registry names (`toast-pro`), so existing install commands keep working.
@@ -626,6 +785,8 @@ Free components are MIT and public. Max adds extra polish on top of them (Compon
 | --- | --- | --- |
 | `toast-pro` | `@morphin/toast` | The success and error story: badge swell, drawn check or cross, a pulse wave that nudges the words, an edge glow, a shake on failure and a word-level text morph |
 | `split-bar-pro` | `chart-pro` | One bar that adds up to 100%: pointing at a segment widens it and shows its numbers, the legend switches segments off and the rest stretch to fill the bar, small segments are labelled beneath on thin lines |
+| `funnel-chart-pro` | `chart-pro`, `card`, `badge` | A conversion funnel on a card: a band per stage in its own color, easing into the next, with its share of the start on a pill and its count in a card below. The header shows the first stage's count and an optional change badge; pointing at a stage (or arrowing onto it) turns it to that stage. Segments split every stage's band and the legend switches them off; new data morphs the bands and the counts count to their new values |
+| `agent-inbox-pro` | `chart-pro`, `card`, `badge`, `button`, `button-group`, `spinner` | Background agent tasks on a card: Needs you (waiting and failed), Running and Done as a board, or one list below 42rem of its own width. Running and waiting tasks keep a live clock, column counts roll, and a card opens in place to its agent, its last steps and Approve and Reject, Retry or Open. Without a handler the inbox changes the status itself; with one it follows your state. A task whose status changes shows it where it is for 600 ms, then glides to its new column |
 
 ```bash
 npx morphinui@latest login      # signs in with your morphin.dev account in the browser
@@ -722,7 +883,7 @@ import { Accordion, AccordionItem, AccordionPanel, AccordionTrigger } from '@/co
 </Accordion>
 ```
 
-[Base UI Accordion](https://base-ui.com/react/components/accordion) with the Morphin look. One panel opens at a time; `multiple` lets several stay open. `value` / `defaultValue` are arrays of item values, `onValueChange` gets the new array; `disabled`, `hiddenUntilFound` (find-in-page opens a panel) and `keepMounted` work on the root, and `disabled` on an item. `variant` is `ghost` (rows divided by hairlines, default) or `card` (each item a solid surface in the signature shape, with a gap; a closed card lightens on hover and the whole card takes the focus ring). `size` is `sm` or `md` (default). Both reach every item through context. Each trigger is a heading (`h3`; `headerProps={{ render: <h2 /> }}` changes it) holding a button: Tab moves between triggers, Enter or Space toggles. The lucide chevron at the end (`data-icon="inline-end"`) turns over as the panel opens; `icon` replaces it and `icon={null}` removes it. The panel eases its height from Base UI's `--accordion-panel-height` (250 ms open, 200 ms close, `cubic-bezier(0.22,1,0.36,1)`) while the content fades in from a 2 px blur; reduced motion (system, `MotionProvider` or `reduceMotion`) opens and closes at once. `className` on `AccordionPanel` styles the content (where the padding lives); `panelClassName` styles the animated panel, which must stay unpadded. Stable slots: `accordion`, `accordion-item`, `accordion-header`, `accordion-trigger`, `accordion-label`, `accordion-panel`, `accordion-content`.
+[Base UI Accordion](https://base-ui.com/react/components/accordion) with the Morphin look. One panel opens at a time; `multiple` lets several stay open. `value` / `defaultValue` are arrays of item values, `onValueChange` gets the new array; `disabled`, `hiddenUntilFound` (find-in-page opens a panel) and `keepMounted` work on the root, and `disabled` on an item. `variant` is `ghost` (rows divided by hairlines, default) or `card` (each item a solid surface in the signature shape, with a gap; a closed card lightens on hover and the whole card takes the focus ring). `size` is `sm` or `md` (default). Both reach every item through context. Each trigger is a heading (`h3`; `headerProps={{ render: <h2 /> }}` changes it) holding a button: Tab moves between triggers, Enter or Space toggles. The chevron at the end (`data-icon="inline-end"`) turns over as the panel opens; `icon` replaces it and `icon={null}` removes it. The panel eases its height from Base UI's `--accordion-panel-height` (250 ms open, 200 ms close, `cubic-bezier(0.22,1,0.36,1)`) while the content fades in from a 2 px blur; reduced motion (system, `MotionProvider` or `reduceMotion`) opens and closes at once. `className` on `AccordionPanel` styles the content (where the padding lives); `panelClassName` styles the animated panel, which must stay unpadded. Stable slots: `accordion`, `accordion-item`, `accordion-header`, `accordion-trigger`, `accordion-label`, `accordion-panel`, `accordion-content`.
 
 ## Calendar
 
@@ -734,7 +895,7 @@ import { Calendar, type DateRange } from '@/components/ui/calendar';
 <Calendar mode="range" numberOfMonths={2} selected={range} onSelect={setRange} disabled={{ before: new Date() }} />
 ```
 
-A month grid on [react-day-picker](https://daypicker.dev) (v10) with the Morphin look; every DayPicker prop passes through: `mode` (`single`, `multiple`, `range`), `selected` / `onSelect`, `required`, `min` / `max`, `disabled` and `hidden` matchers, `defaultMonth` / `month` / `onMonthChange`, `startMonth` / `endMonth`, `numberOfMonths`, `captionLayout="dropdown"` (native month and year menus), `locale` (a date-fns locale from `react-day-picker/locale`), `weekStartsOn`, `showWeekNumber`, `footer`. Outside days show by default, muted. Days are circles in the signature shape; the chosen day's primary fill scales in from 0.75 as it fades in (200 ms), hover lights a day on `--accent`, today has a small dot in the text color, disabled days take `--disabled-foreground`, and a range joins its ends with an `--accent` band that rounds where a week row breaks. Month navigation uses ghost `IconButton`s with lucide chevrons. `size` is `sm` (32 px days) or `md` (36 px, default). `classNames` adds classes to any part (merged with the defaults), `components` replaces one.
+A month grid on [react-day-picker](https://daypicker.dev) (v10) with the Morphin look; every DayPicker prop passes through: `mode` (`single`, `multiple`, `range`), `selected` / `onSelect`, `required`, `min` / `max`, `disabled` and `hidden` matchers, `defaultMonth` / `month` / `onMonthChange`, `startMonth` / `endMonth`, `numberOfMonths`, `captionLayout="dropdown"` (native month and year menus), `locale` (a date-fns locale from `react-day-picker/locale`), `weekStartsOn`, `showWeekNumber`, `footer`. Outside days show by default, muted. Days are circles in the signature shape; the chosen day's primary fill scales in from 0.75 as it fades in (200 ms), hover lights a day on `--accent`, today has a small dot in the text color, disabled days take `--disabled-foreground`, and a range joins its ends with an `--accent` band that rounds where a week row breaks. Month navigation uses ghost `IconButton`s with chevrons. `size` is `sm` (32 px days) or `md` (36 px, default). `classNames` adds classes to any part (merged with the defaults), `components` replaces one.
 
 When the month changes (arrows, keyboard, a controlled `month`), each month slides 8 px in the direction of travel and cross-blurs: an inert, `aria-hidden` copy of the old month leaves while the new caption and weeks arrive, over 250 ms on `cubic-bezier(0.22,1,0.36,1)` with GSAP. It never plays on the first render, reverts its inline styles and removes the copy on settle, interruption and unmount, and is off under reduced motion (the system, a `MotionProvider` or `reduceMotion`). DayPicker's own `animate` is not used. Keyboard: the grid is one Tab stop (the chosen day or today); arrows move by day and week, Page Up / Page Down by month (Shift: year), Home / End to the week's ends. `ref` targets the root. Stable slots: `calendar`, `calendar-months`, `calendar-month`, `calendar-caption`, `calendar-nav`, `calendar-nav-button`, `calendar-grid`, `calendar-weekdays`, `calendar-weeks`, `calendar-week`, `calendar-day`, `calendar-day-button`, `calendar-footer`; a day cell also carries `data-range-start`, `data-range-middle` and `data-range-end`.
 
@@ -752,7 +913,7 @@ import { Field, FieldLabel } from '@/components/ui/field';
 <DatePicker mode="range" aria-label="Stay" calendarProps={{ numberOfMonths: 2, disabled: { before: new Date() } }} />
 ```
 
-A field-like button that opens a `Calendar` in a [Base UI Popover](https://base-ui.com/react/components/popover). The trigger is the outline select trigger (`--field` fill, `--field-border`, `size="xs" | "sm" | "md" | "lg"`, `variant`, `fullWidth`, `aria-invalid`, `disabled`) with a lucide `CalendarDays` icon and the date, or a muted `placeholder`. The popup reuses the dropdown surface and its enter and exit motion. Opening moves focus to the chosen day (or today); choosing a day closes the popover and returns focus to the button. `mode="range"` takes `{ from, to }`, starts a new range on each open (`resetOnSelect`) and closes once both ends are chosen; the button shows `formatRange` ("Oct 30 – Nov 2, 2026").
+A field-like button that opens a `Calendar` in a [Base UI Popover](https://base-ui.com/react/components/popover). The trigger is the outline select trigger (`--field` fill, `--field-border`, `size="xs" | "sm" | "md" | "lg"`, `variant`, `fullWidth`, `aria-invalid`, `disabled`) with a calendar icon and the date, or a muted `placeholder`. The popup reuses the dropdown surface and its enter and exit motion. Opening moves focus to the chosen day (or today); choosing a day closes the popover and returns focus to the button. `mode="range"` takes `{ from, to }`, starts a new range on each open (`resetOnSelect`) and closes once both ends are chosen; the button shows `formatRange` ("Oct 30 – Nov 2, 2026").
 
 `value` / `defaultValue` / `onValueChange` (`Date`, or a `DateRange` in range mode; `null` keeps a controlled picker empty), `format` (`Intl.DateTimeFormat` options, default `{ dateStyle: 'medium' }`), `locale` (a BCP 47 tag for the button's text, or a date-fns locale that also localizes the calendar; default `en-US`), `name` (a hidden input submits `yyyy-mm-dd`, or `yyyy-mm-dd/yyyy-mm-dd` for a range; `toISODate` is exported), `open` / `defaultOpen` / `onOpenChange`, `calendarProps` (any calendar prop except the selection: `disabled`, `startMonth`, `endMonth`, `numberOfMonths`, `weekStartsOn`, `captionLayout`, `size`…), `dialogLabel`, `portalProps` (`container` for a themed region), `positionerProps`, `reduceMotion`. Inside a Base UI `Field`, the `FieldLabel` points at the button and names it together with the date ("Due date Oct 23, 2026"), and descriptions and errors describe it; outside one, give it an `aria-label`, which is also read with the date. `ref` targets the button. Stable slots: `date-picker-trigger`, `date-picker-icon`, `date-picker-value`, `date-picker-positioner`, `date-picker-content`.
 
@@ -828,13 +989,14 @@ Optional interface sounds. Every interactive component plays a cue for its job t
 | `Switch`, `Checkbox`, a checkbox menu item; `Chip`, `ActionCard`, `ButtonGroupItem` as toggles | `toggle`, played backwards when it turns off |
 | `Radio`, `Tabs` (subtle), `Select`, menu items | `select`; radios and tabs play it backwards when the choice moves back |
 | `Slider` | `select` (subtle), one tick per step |
+| `DataTable` sortable header | `tap` (subtle); its checkboxes, menus and buttons play their own |
 | `Dropdown` and its submenus, `Select` | `select` when it opens (the same sound as picking an item), a quiet `close` when it closes |
 | `DatePicker`, `Accordion` | `open` / `close` (subtle) |
 | `Modal` | `open` / `close` |
 | `Announcement` dismiss | `close` (subtle) |
 | `Calendar` | `select` for a day, `navigate` between months |
 | `Toast` | `success`, `error`, `loading`, or `ready` for a plain toast (subtle), as it appears or changes state; closing is silent |
-| `Input`, `Textarea` | `type`, only with `typing`; Cuelume sounds it itself from `data-cuelume-type` on the field |
+| `Input`, `Textarea`, `PromptInputTextarea` | `type`, only with `typing`; Cuelume sounds it itself from `data-cuelume-type` on the field |
 
 When one interaction raises several cues (a picked menu item also closes the menu, a trigger button also opens its dialog), only the most specific plays; a tap within 250 ms after a richer cue belongs to the same gesture and is dropped, and the same cue within 50 ms is dropped, so a dragged slider ticks instead of buzzing. A tap waits one frame before it plays, because a menu opens a frame after the press: on a quick click the open arrives in that frame and replaces it. Nothing plays on hover, for a value the app sets by itself, or for an overlay the app closes through `actionsRef`.
 

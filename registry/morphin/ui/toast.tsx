@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState, type ComponentProps, type ReactNode, type RefObject } from 'react';
 import { Toast as BaseToast } from '@base-ui/react/toast';
 import { BorderBeam, type BorderBeamColorVariant } from 'border-beam';
-import { Bell, Check, X } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Cancel01Icon, Notification01Icon, Tick02Icon } from '@hugeicons/core-free-icons';
 import { Arc } from 'loading-dev';
 import { cn } from '@/lib/utils';
 import { useReducedMotion } from '@/registry/morphin/lib/motion';
@@ -94,8 +95,8 @@ export const toast = Object.assign((input: ToastInput) => show(input), {
 
 /** The badge's check or cross. The explicit size keeps the icon circle's svg rule from making it 20 px. */
 function StateGlyph({ state }: { state: ToastState }) {
-  if (state === 'success') return <Check className="size-2.5" strokeWidth={3} />;
-  if (state === 'error') return <X className="size-2.5" strokeWidth={3} />;
+  if (state === 'success') return <HugeiconsIcon icon={Tick02Icon} aria-hidden="true" className="size-2.5" strokeWidth={3} />;
+  if (state === 'error') return <HugeiconsIcon icon={Cancel01Icon} aria-hidden="true" className="size-2.5" strokeWidth={3} />;
   return null;
 }
 
@@ -192,7 +193,7 @@ function ToastCard({ item, depth, reduced, swipeDirection, beamColor, effects, c
             {layers.bloom}
             {layers.wave}
             <span data-slot="toast-icon" className={cn(toastIconVariants(), 'z-10')}>
-              {item.data?.icon ?? <Bell strokeWidth={1.8} />}
+              {item.data?.icon ?? <HugeiconsIcon icon={Notification01Icon} aria-hidden="true" strokeWidth={1.8} />}
               <span ref={badge} data-slot="toast-badge" className={toastBadgeVariants({ state })}>
                 {layers.halo}
                 <span ref={spinner} data-slot="toast-spinner" className={toastBadgeLayerVariants({ visible: state === 'loading' })}>
@@ -209,7 +210,7 @@ function ToastCard({ item, depth, reduced, swipeDirection, beamColor, effects, c
               </div>
             </div>
             <BaseToast.Close data-slot="toast-close" aria-label={closeLabel} className={toastCloseVariants()}>
-              <X className="size-2.5" strokeWidth={2.75} />
+              <HugeiconsIcon icon={Cancel01Icon} aria-hidden="true" className="size-2.5" strokeWidth={2.75} />
             </BaseToast.Close>
           </BaseToast.Content>
         </div>

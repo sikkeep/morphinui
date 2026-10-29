@@ -2,7 +2,8 @@
 
 import { createContext, use, type HTMLAttributes, type ReactNode, type Ref } from 'react';
 import { Menu } from '@base-ui/react/menu';
-import { ChevronDown } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { ArrowDown01Icon } from '@hugeicons/core-free-icons';
 import { cn } from '@/lib/utils';
 import { Button, ButtonLink, type ButtonLinkProps, type ButtonProps, type ButtonSize, type ButtonVariant } from '@/registry/morphin/ui/button';
 import { buttonIconClasses } from '@/registry/morphin/ui/button-content';
@@ -135,7 +136,7 @@ export function SplitButtonMenu({
           !reduced && 'transition-transform duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]',
         )}
       >
-        {icon ?? <ChevronDown />}
+        {icon ?? <HugeiconsIcon icon={ArrowDown01Icon} strokeWidth={2} aria-hidden="true" />}
       </span>
     </Menu.Trigger>
     {children}

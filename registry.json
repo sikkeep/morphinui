@@ -8,6 +8,12 @@
       "type": "registry:lib",
       "title": "Motion",
       "description": "The shared reduced-motion policy and motion tokens used by every Morphin animation.",
+      "categories": [
+        "foundation",
+        "animation",
+        "accessibility",
+        "gsap"
+      ],
       "files": [
         {
           "path": "registry/morphin/lib/motion.tsx",
@@ -20,6 +26,11 @@
       "type": "registry:lib",
       "title": "Sound",
       "description": "The interface-sound policy every Morphin component follows: SoundProvider, useSound and the cue queue. Silent until a provider turns it on; loads no audio by itself.",
+      "categories": [
+        "foundation",
+        "sound",
+        "accessibility"
+      ],
       "files": [
         {
           "path": "registry/morphin/lib/sound.tsx",
@@ -32,6 +43,11 @@
       "type": "registry:lib",
       "title": "Sound: Cuelume",
       "description": "Plays Morphin's interface sounds with Cuelume (MIT): fourteen cues synthesized live with Web Audio, no audio files.",
+      "categories": [
+        "foundation",
+        "sound",
+        "audio"
+      ],
       "dependencies": [
         "cuelume@^0.2.8"
       ],
@@ -50,6 +66,11 @@
       "type": "registry:item",
       "title": "Morphin tokens",
       "description": "The extra tokens Morphin components need on top of a shadcn theme: hover and pressed states derived from your colors, a third text level, status colors (and softer success and failure colors for light surfaces), the brand color, disabled states, the corner shape and the menu shadow. Existing values are never overwritten.",
+      "categories": [
+        "foundation",
+        "theming",
+        "design-tokens"
+      ],
       "cssVars": {
         "theme": {
           "color-primary-hover": "var(--primary-hover)",
@@ -92,10 +113,10 @@
           "destructive-active": "color-mix(in oklch, var(--destructive), black 22%)",
           "disabled": "var(--muted)",
           "disabled-foreground": "color-mix(in oklch, var(--muted-foreground), var(--muted) 30%)",
-          "brand": "#f6d5e7",
-          "brand-foreground": "#65334e",
-          "brand-hover": "#efc2dc",
-          "brand-active": "#e9b0d0",
+          "brand": "#2563eb",
+          "brand-foreground": "#ffffff",
+          "brand-hover": "#1d4ed8",
+          "brand-active": "#1e40af",
           "destructive-foreground": "#ffffff",
           "corner-shape": "superellipse(1.2)",
           "popover-shadow": "0 0 0 1px color-mix(in oklch, var(--foreground) 7%, transparent), 0 2px 4px -1px oklch(0 0 0 / 0.06), 0 6px 16px -4px oklch(0 0 0 / 0.06)",
@@ -136,7 +157,11 @@
           "field": "var(--card)",
           "field-border": "var(--border)",
           "surface-raised": "color-mix(in oklch, var(--card), var(--foreground) 8%)",
-          "menu": "color-mix(in srgb, var(--foreground) 5%, var(--background))"
+          "menu": "color-mix(in srgb, var(--foreground) 5%, var(--background))",
+          "brand": "#60a5fa",
+          "brand-foreground": "#081b35",
+          "brand-hover": "#93c5fd",
+          "brand-active": "#3b82f6"
         }
       }
     },
@@ -144,7 +169,13 @@
       "name": "theme",
       "type": "registry:theme",
       "title": "Morphin theme",
-      "description": "The Morphin palette for light and dark mode: warm neutrals and plum focus rings. Hover, pressed and brand colors come from @morphin/tokens.",
+      "description": "The Morphin palette for light and dark mode: warm neutrals and blue focus rings. Hover, pressed and brand colors come from @morphin/tokens.",
+      "categories": [
+        "foundation",
+        "theming",
+        "dark-mode",
+        "colors"
+      ],
       "registryDependencies": [
         "@morphin/tokens"
       ],
@@ -187,7 +218,7 @@
           "destructive": "#b52c3a",
           "border": "#deded8",
           "input": "#deded8",
-          "ring": "#855b99"
+          "ring": "#2563eb"
         },
         "dark": {
           "background": "#000000",
@@ -207,7 +238,7 @@
           "destructive": "#ee818c",
           "border": "#242424",
           "input": "#2e2e2e",
-          "ring": "#e6b5d1"
+          "ring": "#60a5fa"
         }
       }
     },
@@ -216,6 +247,11 @@
       "type": "registry:item",
       "title": "Morphin typography",
       "description": "The Morphin type scale on the standard Tailwind sizes (text-2xs to text-6xl): sizes, line heights and letter spacing. Pair with font-medium for labels and headings.",
+      "categories": [
+        "foundation",
+        "theming",
+        "typography"
+      ],
       "cssVars": {
         "theme": {
           "text-xs": "0.75rem",
@@ -256,6 +292,12 @@
       "type": "registry:ui",
       "title": "Button",
       "description": "Six variants, four sizes, icons, loading states and animated content changes.",
+      "categories": [
+        "buttons",
+        "actions",
+        "forms",
+        "animation"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "class-variance-authority@^0.7.1",
@@ -288,11 +330,18 @@
       "type": "registry:ui",
       "title": "Dropdown",
       "description": "A menu with a sliding highlight, checked items, submenus, segmented rows and icon chips.",
+      "categories": [
+        "menus",
+        "overlays",
+        "navigation",
+        "animation"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "class-variance-authority@^0.7.1",
         "gsap@^3.13.0",
-        "lucide-react"
+        "@hugeicons/react",
+        "@hugeicons/core-free-icons"
       ],
       "registryDependencies": [
         "utils",
@@ -321,9 +370,15 @@
       "type": "registry:ui",
       "title": "Select",
       "description": "A select built on Base UI Select, styled like the button and the dropdown: a form control with a sliding highlight, groups, icons and descriptions.",
+      "categories": [
+        "forms",
+        "menus",
+        "inputs"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
-        "lucide-react"
+        "@hugeicons/react",
+        "@hugeicons/core-free-icons"
       ],
       "registryDependencies": [
         "utils",
@@ -349,6 +404,11 @@
       "type": "registry:ui",
       "title": "Button Group",
       "description": "Buttons joined into one control with a shared outline: filters, view switches and toolbars.",
+      "categories": [
+        "buttons",
+        "actions",
+        "layout"
+      ],
       "registryDependencies": [
         "utils",
         "@morphin/button",
@@ -366,6 +426,11 @@
       "type": "registry:ui",
       "title": "Split Button",
       "description": "A main action and an arrow that opens a menu on hover or click, joined into one pill.",
+      "categories": [
+        "buttons",
+        "actions",
+        "menus"
+      ],
       "registryDependencies": [
         "utils",
         "@morphin/button",
@@ -374,7 +439,8 @@
       ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
-        "lucide-react"
+        "@hugeicons/react",
+        "@hugeicons/core-free-icons"
       ],
       "files": [
         {
@@ -388,6 +454,11 @@
       "type": "registry:ui",
       "title": "Link Button",
       "description": "An inline text action that renders a link or a button, with underline on hover, sizes and icons.",
+      "categories": [
+        "buttons",
+        "navigation",
+        "actions"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "class-variance-authority@^0.7.1"
@@ -413,6 +484,11 @@
       "type": "registry:ui",
       "title": "Badge",
       "description": "A small pill for counts, statuses and labels, with neutral, primary, outline, brand and status variants, three sizes, a dot and icons.",
+      "categories": [
+        "data-display",
+        "status",
+        "labels"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "class-variance-authority@^0.7.1"
@@ -437,6 +513,12 @@
       "type": "registry:ui",
       "title": "Chip",
       "description": "A roomy pill for tags, statuses and filters: filled or outline, three sizes, a shimmering label, icons, and a toggle, button or link when it is given a handler, `selected` or an href. ChipGroup joins two into a pair.",
+      "categories": [
+        "data-display",
+        "filters",
+        "labels",
+        "tags"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "class-variance-authority@^0.7.1",
@@ -464,10 +546,16 @@
       "type": "registry:ui",
       "title": "Avatar",
       "description": "A person or a team as an image with initials behind it, a status dot, and a group that overlaps avatars with a +N count.",
+      "categories": [
+        "data-display",
+        "identity",
+        "status"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "class-variance-authority@^0.7.1",
-        "lucide-react"
+        "@hugeicons/react",
+        "@hugeicons/core-free-icons"
       ],
       "registryDependencies": [
         "utils",
@@ -490,6 +578,11 @@
       "type": "registry:ui",
       "title": "Card",
       "description": "A surface for grouped content with header, content, footer and media parts, filled or outlined, as a link or a button.",
+      "categories": [
+        "layout",
+        "surfaces",
+        "data-display"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "class-variance-authority@^0.7.1"
@@ -515,10 +608,16 @@
       "type": "registry:ui",
       "title": "Announcement",
       "description": "A compact card for a sidebar footer or a corner of the page: an icon, a title, a description, an action and a dismiss button, with an animated close.",
+      "categories": [
+        "feedback",
+        "notifications",
+        "banner"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "gsap@^3.13.0",
-        "lucide-react"
+        "@hugeicons/react",
+        "@hugeicons/core-free-icons"
       ],
       "registryDependencies": [
         "utils",
@@ -543,7 +642,13 @@
       "name": "action-card",
       "type": "registry:ui",
       "title": "Action Card",
-      "description": "A small 116 × 128 card that is one action: a preview tile (icon, image or video) with a label, as a link or a button, with an active state for filters and navigation.",
+      "description": "A small 116 \u00d7 128 card that is one action: a preview tile (icon, image or video) with a label, as a link or a button, with an active state for filters and navigation.",
+      "categories": [
+        "actions",
+        "navigation",
+        "cards",
+        "filters"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "class-variance-authority@^0.7.1",
@@ -570,6 +675,12 @@
       "type": "registry:ui",
       "title": "Action Card Menu",
       "description": "An action card that opens into a menu in its own place: the card morphs into the popup, its title and icon travel into the header and the rows follow, all with GSAP.",
+      "categories": [
+        "actions",
+        "menus",
+        "cards",
+        "animation"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "gsap@^3.13.0"
@@ -592,13 +703,20 @@
       "type": "registry:ui",
       "title": "Toast",
       "description": "Stacked notifications on Base UI Toast: loading, success and error states, hover to expand, swipe to dismiss, promise helper. The animated state effects (pulse, glow, shake, text morph) are in the Pro item toast-pro.",
+      "categories": [
+        "feedback",
+        "notifications",
+        "overlays",
+        "animation"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "class-variance-authority@^0.7.1",
         "gsap@^3.13.0",
         "loading-dev@^0.3.5",
         "border-beam@^1.4.1",
-        "lucide-react"
+        "@hugeicons/react",
+        "@hugeicons/core-free-icons"
       ],
       "registryDependencies": [
         "utils",
@@ -626,6 +744,12 @@
       "type": "registry:ui",
       "title": "Field",
       "description": "Accessible labels, descriptions and validation shared by text controls.",
+      "categories": [
+        "forms",
+        "inputs",
+        "validation",
+        "accessibility"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "class-variance-authority@^0.7.1"
@@ -654,6 +778,11 @@
       "type": "registry:ui",
       "title": "Input",
       "description": "Single-line text fields with three sizes, decorative icons and native form behavior.",
+      "categories": [
+        "forms",
+        "inputs",
+        "text"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0"
       ],
@@ -674,6 +803,11 @@
       "type": "registry:ui",
       "title": "Textarea",
       "description": "Multiline text fields with three sizes, native resizing and bounded automatic height.",
+      "categories": [
+        "forms",
+        "inputs",
+        "text"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0"
       ],
@@ -694,10 +828,16 @@
       "type": "registry:ui",
       "title": "Checkbox",
       "description": "A box that fills, then draws its tick, with labels, an indeterminate dash and a group with a select-all parent.",
+      "categories": [
+        "forms",
+        "inputs",
+        "selection"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "class-variance-authority@^0.7.1",
-        "lucide-react"
+        "@hugeicons/react",
+        "@hugeicons/core-free-icons"
       ],
       "registryDependencies": [
         "utils",
@@ -721,6 +861,11 @@
       "type": "registry:ui",
       "title": "Radio",
       "description": "A round choice that fills and shows a dot, in a group with arrow-key navigation, labels and descriptions.",
+      "categories": [
+        "forms",
+        "inputs",
+        "selection"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "class-variance-authority@^0.7.1"
@@ -747,6 +892,12 @@
       "type": "registry:ui",
       "title": "Switch",
       "description": "Base UI switch with three sizes, labels, descriptions, thumb icons, groups and a GSAP toggle bounce.",
+      "categories": [
+        "forms",
+        "inputs",
+        "toggle",
+        "animation"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "class-variance-authority@^0.7.1",
@@ -774,6 +925,11 @@
       "type": "registry:ui",
       "title": "Slider",
       "description": "Base UI slider with a label, a formatted value that rolls as it changes, ranges, vertical orientation and composable parts.",
+      "categories": [
+        "forms",
+        "inputs",
+        "range"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "class-variance-authority@^0.7.1",
@@ -801,10 +957,16 @@
       "type": "registry:ui",
       "title": "Modal",
       "description": "Base UI dialog with sizes, placements, backdrops, inside or outside scrolling and a scale-up open with a softer close.",
+      "categories": [
+        "overlays",
+        "dialog",
+        "feedback"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "class-variance-authority@^0.7.1",
-        "lucide-react"
+        "@hugeicons/react",
+        "@hugeicons/core-free-icons"
       ],
       "registryDependencies": [
         "utils",
@@ -829,10 +991,16 @@
       "type": "registry:ui",
       "title": "Tabs",
       "description": "Base UI tabs with a primary pill and a secondary underline that slide between tabs, three sizes, vertical layout, overflow chevrons, separators and a fading panel.",
+      "categories": [
+        "navigation",
+        "layout",
+        "animation"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "class-variance-authority@^0.7.1",
-        "lucide-react"
+        "@hugeicons/react",
+        "@hugeicons/core-free-icons"
       ],
       "registryDependencies": [
         "utils",
@@ -856,10 +1024,16 @@
       "type": "registry:ui",
       "title": "Accordion",
       "description": "Base UI accordion with ghost rows or card surfaces, two sizes, a panel that eases its height open while the content fades in, and a chevron that turns over.",
+      "categories": [
+        "layout",
+        "disclosure",
+        "animation"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "class-variance-authority@^0.7.1",
-        "lucide-react"
+        "@hugeicons/react",
+        "@hugeicons/core-free-icons"
       ],
       "registryDependencies": [
         "utils",
@@ -883,6 +1057,11 @@
       "type": "registry:ui",
       "title": "Spinner",
       "description": "Any loading-dev spinner (Atom by default) that inherits color, takes named sizes and pauses under reduced motion.",
+      "categories": [
+        "feedback",
+        "loading",
+        "animation"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "loading-dev@^0.3.5"
@@ -903,6 +1082,12 @@
       "type": "registry:ui",
       "title": "Skeleton",
       "description": "An ASCII skeleton for loading content, and a reveal that decodes the real content into place when it arrives. Built on ascii-reveal (MIT).",
+      "categories": [
+        "feedback",
+        "loading",
+        "ascii",
+        "animation"
+      ],
       "dependencies": [
         "ascii-reveal@^0.3.0"
       ],
@@ -922,11 +1107,17 @@
       "type": "registry:ui",
       "title": "Calendar",
       "description": "A month grid on react-day-picker with single, multiple and range selection, round days in the signature shape and a month change that slides and cross-blurs.",
+      "categories": [
+        "forms",
+        "date-time",
+        "data-display"
+      ],
       "dependencies": [
         "react-day-picker@^10.0.2",
         "class-variance-authority@^0.7.1",
         "gsap@^3.13.0",
-        "lucide-react"
+        "@hugeicons/react",
+        "@hugeicons/core-free-icons"
       ],
       "registryDependencies": [
         "utils",
@@ -951,10 +1142,17 @@
       "type": "registry:ui",
       "title": "Date picker",
       "description": "A field-like button that opens a Calendar in a Base UI popover, for a date or a date range, with locale formatting and a form value.",
+      "categories": [
+        "forms",
+        "date-time",
+        "inputs",
+        "overlays"
+      ],
       "dependencies": [
         "@base-ui/react@^1.9.0",
         "react-day-picker@^10.0.2",
-        "lucide-react"
+        "@hugeicons/react",
+        "@hugeicons/core-free-icons"
       ],
       "registryDependencies": [
         "utils",
@@ -968,6 +1166,196 @@
       "files": [
         {
           "path": "registry/morphin/ui/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "bar-chart",
+      "type": "registry:ui",
+      "title": "Bar Chart",
+      "description": "A compact free chart on the Morphin Card, with green bars, GSAP data updates and numeric counters, a subtle hover ring and an accessible data table.",
+      "categories": [
+        "charts",
+        "data-visualization",
+        "data-display",
+        "animation"
+      ],
+      "dependencies": [
+        "gsap@^3.15.0",
+        "class-variance-authority@^0.7.1"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/motion",
+        "@morphin/tokens",
+        "@morphin/card"
+      ],
+      "cssVars": {
+        "theme": {
+          "color-bar-chart": "var(--bar-chart)"
+        },
+        "light": {
+          "bar-chart": "#4cd676"
+        },
+        "dark": {
+          "bar-chart": "#4cd676"
+        }
+      },
+      "files": [
+        {
+          "path": "registry/morphin/ui/bar-chart.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/bar-chart-variants.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/bar-chart-motion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "data-table",
+      "type": "registry:ui",
+      "title": "Data Table",
+      "description": "A data table on TanStack Table: sortable headers, search, column filters, row selection with bulk actions, a columns menu and pagination, client-side or server-side. Rows glide to their new place when the order changes.",
+      "categories": [
+        "data-display",
+        "tables",
+        "filters",
+        "sorting"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "@tanstack/react-table@^9.3.1",
+        "class-variance-authority@^0.7.1",
+        "gsap@^3.15.0",
+        "@hugeicons/react",
+        "@hugeicons/core-free-icons"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/motion",
+        "@morphin/sound",
+        "@morphin/tokens",
+        "@morphin/button",
+        "@morphin/checkbox",
+        "@morphin/dropdown",
+        "@morphin/input",
+        "@morphin/select",
+        "@morphin/skeleton"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/data-table.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/data-table-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "prompt-input",
+      "type": "registry:ui",
+      "title": "Prompt Input",
+      "description": "A message composer for chat: a textarea that grows with the draft, Enter to send and Escape to stop, attachments by picker, drop or paste, a model menu, voice recording and a send button that turns into Stop.",
+      "categories": [
+        "ai",
+        "chat",
+        "forms",
+        "inputs"
+      ],
+      "dependencies": [
+        "class-variance-authority@^0.7.1",
+        "gsap@^3.13.0",
+        "@hugeicons/react",
+        "@hugeicons/core-free-icons"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/button",
+        "@morphin/dropdown",
+        "@morphin/motion",
+        "@morphin/sound",
+        "@morphin/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/prompt-input.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/prompt-input-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chat",
+      "type": "registry:ui",
+      "title": "Chat",
+      "description": "The parts of a conversation: a thread that follows a streaming reply and offers Jump to latest, user bubbles and assistant messages that rise into place, copy and feedback actions, a thinking state, folded reasoning and errors.",
+      "categories": [
+        "ai",
+        "chat",
+        "messaging",
+        "agents"
+      ],
+      "dependencies": [
+        "@base-ui/react@^1.9.0",
+        "class-variance-authority@^0.7.1",
+        "gsap@^3.13.0",
+        "@hugeicons/react",
+        "@hugeicons/core-free-icons"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/button",
+        "@morphin/spinner",
+        "@morphin/motion",
+        "@morphin/tokens"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/chat.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/morphin/ui/chat-variants.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "ai-chat",
+      "type": "registry:block",
+      "title": "AI Chat",
+      "description": "A complete assistant chat on a Card: greeting and suggestions, a streaming thread with reasoning, copy, retry and feedback, and a composer with attachments, voice and a model menu. Streams demo replies until you pass respond.",
+      "categories": [
+        "ai",
+        "chat",
+        "agents",
+        "blocks"
+      ],
+      "dependencies": [
+        "@hugeicons/react",
+        "@hugeicons/core-free-icons"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@morphin/button",
+        "@morphin/card",
+        "@morphin/chat",
+        "@morphin/prompt-input"
+      ],
+      "files": [
+        {
+          "path": "registry/morphin/ui/ai-chat.tsx",
           "type": "registry:ui"
         }
       ]

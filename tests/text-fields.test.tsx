@@ -1,7 +1,8 @@
 import { createRef, useState } from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Mail, Search } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Mail01Icon, Search01Icon } from '@hugeicons/core-free-icons';
 import { describe, expect, it, vi } from 'vitest';
 import { Field, FieldDescription, FieldError, FieldLabel } from '@/registry/morphin/ui/field';
 import { Input } from '@/registry/morphin/ui/input';
@@ -13,7 +14,7 @@ describe('text fields', () => {
     const input = createRef<HTMLInputElement>();
     const textarea = createRef<HTMLTextAreaElement>();
     const { container } = render(<form>
-      <Field name="email"><FieldLabel>Email</FieldLabel><Input ref={input} type="email" leadingIcon={<Mail />} /><FieldDescription>Work email only.</FieldDescription></Field>
+      <Field name="email"><FieldLabel>Email</FieldLabel><Input ref={input} type="email" leadingIcon={<HugeiconsIcon icon={Mail01Icon} aria-hidden="true" />} /><FieldDescription>Work email only.</FieldDescription></Field>
       <Field name="message"><FieldLabel>Message</FieldLabel><Textarea ref={textarea} /><FieldDescription>A short note.</FieldDescription></Field>
     </form>);
     expect(screen.getByLabelText('Email')).toBe(input.current);
@@ -64,7 +65,7 @@ describe('text fields', () => {
 
   it('enforces textarea maxLength and preserves explicit icon sizes', async () => {
     const user = userEvent.setup();
-    const { container } = render(<><Input aria-label="Search" trailingIcon={<Search className="size-6" />} /><Textarea aria-label="Bio" maxLength={5} /></>);
+    const { container } = render(<><Input aria-label="Search" trailingIcon={<HugeiconsIcon icon={Search01Icon} aria-hidden="true" className="size-6" />} /><Textarea aria-label="Bio" maxLength={5} /></>);
     await user.type(screen.getByLabelText('Bio'), 'Too many characters');
     expect(screen.getByLabelText('Bio')).toHaveValue('Too m');
     expect(container.querySelector('svg')).toHaveClass('size-6');

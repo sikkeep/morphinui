@@ -27,7 +27,7 @@ describe('DatePicker', () => {
     expect(trigger).toHaveAttribute('data-placeholder');
     expect(trigger).toHaveAttribute('aria-haspopup', 'dialog');
     expect(trigger).toHaveAttribute('aria-expanded', 'false');
-    expect(trigger.querySelector('[data-icon=inline-start] svg.lucide-calendar-days')).not.toBeNull();
+    expect(trigger.querySelector('[data-icon=inline-start] svg[aria-hidden="true"]')).not.toBeNull();
 
     await user.click(trigger);
     const dialog = await screen.findByRole('dialog', { name: 'Choose a date' });

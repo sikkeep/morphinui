@@ -2,7 +2,8 @@
 
 import { Children, isValidElement, useCallback, useState, type ReactNode, type Ref } from 'react';
 import { Select as BaseSelect } from '@base-ui/react/select';
-import { Check, ChevronDown } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { ArrowDown01Icon, Tick02Icon } from '@hugeicons/core-free-icons';
 import { cn } from '@/lib/utils';
 import { useReducedMotion } from '@/registry/morphin/lib/motion';
 import { useSound } from '@/registry/morphin/lib/sound';
@@ -75,7 +76,7 @@ export function SelectTrigger({
   >
     {leadingIcon && <span data-slot="select-icon" data-icon="inline-start" className="pointer-events-none inline-flex shrink-0 items-center justify-center" aria-hidden="true">{leadingIcon}</span>}
     {children ?? <BaseSelect.Value data-slot="select-value" placeholder={placeholder} className="min-w-0 flex-1 truncate" />}
-    <BaseSelect.Icon data-slot="select-chevron" data-icon="inline-end" className="pointer-events-none inline-flex shrink-0 items-center justify-center text-muted-foreground"><ChevronDown strokeWidth={1.8} /></BaseSelect.Icon>
+    <BaseSelect.Icon data-slot="select-chevron" data-icon="inline-end" className="pointer-events-none inline-flex shrink-0 items-center justify-center text-muted-foreground"><HugeiconsIcon icon={ArrowDown01Icon} aria-hidden="true" strokeWidth={1.8} /></BaseSelect.Icon>
   </BaseSelect.Trigger>;
 }
 
@@ -151,7 +152,7 @@ export function SelectItem({
       {description && <span className="text-xs font-normal text-muted-foreground">{description}</span>}
     </span>
     <span className="ms-auto inline-flex size-4 shrink-0 items-center justify-center" aria-hidden="true">
-      <BaseSelect.ItemIndicator data-slot="select-item-indicator"><Check strokeWidth={1.8} /></BaseSelect.ItemIndicator>
+      <BaseSelect.ItemIndicator data-slot="select-item-indicator"><HugeiconsIcon icon={Tick02Icon} aria-hidden="true" strokeWidth={1.8} /></BaseSelect.ItemIndicator>
     </span>
   </BaseSelect.Item>;
 }

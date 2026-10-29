@@ -100,13 +100,13 @@ describe('Calendar', () => {
     expect(onSelect).not.toHaveBeenCalled();
   });
 
-  it('navigates months with lucide chevron icon buttons', async () => {
+  it('navigates months with chevron icon buttons', async () => {
     const user = userEvent.setup();
     const onMonthChange = vi.fn();
     render(<Calendar mode="single" defaultMonth={month} today={today} onMonthChange={onMonthChange} reduceMotion />);
     const next = screen.getByRole('button', { name: /next month/i });
     expect(next).toHaveAttribute('data-slot', 'calendar-nav-button');
-    expect(next.querySelector('svg.lucide-chevron-right')).not.toBeNull();
+    expect(next.querySelector('svg[aria-hidden="true"]')).not.toBeNull();
     await user.click(next);
     expect(onMonthChange).toHaveBeenCalledWith(new Date(2026, 10, 1));
     expect(screen.getByRole('grid', { name: 'November 2026' })).toBeInTheDocument();

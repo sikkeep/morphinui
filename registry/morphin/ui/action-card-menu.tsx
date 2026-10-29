@@ -23,10 +23,45 @@ const popupClasses = [
   'data-ending-style:opacity-100 data-ending-style:translate-y-0 data-ending-style:blur-none',
 ].join(' ');
 
-// The open clip extends past the popup so its shadow is never cut.
+// A menu this short never scrolls, and a classic scrollbar (Windows) would take 17 px of its width.
+const scrollbarClasses = '[scrollbar-width:none] [&::-webkit-scrollbar]:hidden';
+
+// The surface is clipped to the card's region, grows to the popup's own box (`flush`), and only then reaches
+// past it so the popup's shadow is never cut. Reaching past it earlier, while the right and bottom edges
+// were still closed in, left the top-right and bottom-left corners square: their rounding sat outside the box.
 const reach = 24;
-const radius = 16;
-const open = `inset(-${reach}px -${reach}px -${reach}px -${reach}px round ${radius}px)`;
+/** The card's corner radius (`rounded-[16px]`): the surface starts as the card. */
+const cardRadius = 16;
+/** Seen in the popup's computed style; the dropdown surface is `rounded-[14px]`. */
+const fallbackRadius = 14;
+/** The tail of the open (and the first step of the close) that moves the clip past or back to the box. */
+const tail = 0.15;
+
+function popupRadius(popup: HTMLElement) {
+  const value = Number.parseFloat(getComputedStyle(popup).borderTopLeftRadius);
+  return Number.isFinite(value) && value > 0 ? value : fallbackRadius;
+}
+
+const flushOf = (popup: HTMLElement) => `inset(0px 0px 0px 0px round ${popupRadius(popup)}px)`;
+const openOf = (popup: HTMLElement) => `inset(-${reach}px -${reach}px -${reach}px -${reach}px round ${popupRadius(popup)}px)`;
+
+/**
+ * Writes an `inset()` clip with four sides and a radius. The browser reports a clip whose sides are equal in
+ * its short form (`inset(-24px round 16px)`), and GSAP reads the numbers of a start value by position, so a
+ * tween that begins from that string starts from garbage: the close began with the right side 16 px closed.
+ */
+function fourSides(value: string | null | undefined) {
+  const match = /^inset\(\s*([^)]*?)(?:\s+round\s+([^)]*?))?\s*\)$/.exec((value ?? '').trim());
+  if (!match) return null;
+  const sides = match[1].split(/\s+/).filter(Boolean);
+  if (sides.length === 0 || sides.length > 4) return null;
+  const [top, right = top, bottom = top, left = right] = sides;
+  const corner = match[2]?.split(/\s+/)[0] ?? '0px';
+  return `inset(${top} ${right} ${bottom} ${left} round ${corner})`;
+}
+
+/** Where the surface's clip is now, as a start value for a tween. */
+const clipNow = (popup: HTMLElement, fallback: string) => fourSides(popup.style.clipPath) ?? fourSides(getComputedStyle(popup).clipPath) ?? fallback;
 
 interface Morph {
   timeline: gsap.core.Timeline | null;
@@ -53,14 +88,19 @@ function parts(popup: HTMLElement) {
   return { face, pairs, cardParts, highlight, others: [...header, ...rows] };
 }
 
-/** Places the card face over the card and returns a `clip-path` for the card's region of the popup. */
+/**
+ * Places the card face over the card and returns a `clip-path` for the card's region of the popup. A menu
+ * shorter than the card (a two-row menu is 114 px, the card 128 px) is held at the card's height while it
+ * morphs, so `boxHeight` is what the popup measures then, not what it measures now.
+ */
 function collapse(popup: HTMLElement, card: HTMLElement, face: HTMLElement) {
   const cardBox = card.getBoundingClientRect();
   const popupBox = popup.getBoundingClientRect();
   const left = cardBox.left - popupBox.left;
   const top = cardBox.top - popupBox.top;
+  const bottom = popupBox.top + Math.max(popupBox.height, cardBox.height) - cardBox.bottom;
   gsap.set(face, { left, top, width: cardBox.width, height: cardBox.height });
-  return `inset(${top}px ${popupBox.right - cardBox.right}px ${popupBox.bottom - cardBox.bottom}px ${left}px round ${radius}px)`;
+  return `inset(${top}px ${popupBox.right - cardBox.right}px ${bottom}px ${left}px round ${cardRadius}px)`;
 }
 
 /** Grows the popup out of the card, moves the title and icon into the header, then raises the rows. */
@@ -69,10 +109,20 @@ function enter(popup: HTMLElement, card: HTMLElement) {
   if (!found) return null;
   const { face, pairs, cardParts, highlight, others } = found;
   const token = motionTokens.morph;
+  const cardHeight = card.getBoundingClientRect().height;
+  const natural = popup.getBoundingClientRect().height;
+  // The card's copy is taller than the menu: without room it was cut at the popup's edge on the first frame.
+  const short = cardHeight > natural;
+  // The rows rise from 8 px low and the title travels in: for those frames they overflow the popup, and a
+  // scrollbar that appears for a few frames takes its width and gives it back. Nothing scrolls during the morph.
+  gsap.set(popup, { overflowY: 'hidden', ...(short && { minHeight: cardHeight }) });
   const collapsed = collapse(popup, card, face);
-  const timeline = gsap.timeline({ defaults: { ease: grow } });
+  const flush = flushOf(popup);
+  const timeline = gsap.timeline({ defaults: { ease: grow }, onComplete: () => { gsap.set(popup, { clearProps: 'overflowY,minHeight' }); } });
+  if (short) timeline.fromTo(popup, { minHeight: cardHeight }, { minHeight: natural, duration: token.duration }, 0);
   gsap.set(pairs.map((pair) => pair.from), { opacity: 0 });
-  timeline.fromTo(popup, { clipPath: collapsed }, { clipPath: open, duration: token.duration }, 0);
+  timeline.fromTo(popup, { clipPath: collapsed }, { clipPath: flush, duration: token.duration }, 0);
+  timeline.fromTo(popup, { clipPath: flush }, { clipPath: openOf(popup), duration: tail, ease: 'power1.out', immediateRender: false }, token.duration);
   // The card's tile and label are gone before the rows arrive; its own surface melts into the menu's.
   timeline.fromTo(cardParts, { opacity: 1 }, { opacity: 0, duration: token.fade, ease: 'power1.out' }, 0);
   timeline.fromTo(face, { autoAlpha: 1 }, { autoAlpha: 0, duration: token.fade * 2, ease: 'power1.out' }, 0.04);
@@ -109,8 +159,16 @@ function exit(popup: HTMLElement, card: HTMLElement, done: () => void) {
   const { face, pairs, cardParts, highlight, others } = found;
   const token = motionTokens.morph;
   const collapsed = collapse(popup, card, face);
+  const flush = flushOf(popup);
+  // Read before anything moves: an interrupted enter is somewhere between its tween and its tail.
+  const from = clipNow(popup, openOf(popup));
+  const cardHeight = card.getBoundingClientRect().height;
+  const height = popup.getBoundingClientRect().height;
   const timeline = gsap.timeline({ defaults: { ease: token.exitEase }, onComplete: done });
-  gsap.set(popup, { pointerEvents: 'none' });
+  gsap.set(popup, { pointerEvents: 'none', overflowY: 'hidden' });
+  // A menu shorter than the card grows back to the card's height as it closes, so the copy that lands on the
+  // card is whole.
+  if (cardHeight > height) timeline.fromTo(popup, { minHeight: height }, { minHeight: cardHeight, duration: token.exitDuration }, 0);
   timeline.to(others, { opacity: 0, duration: 0.12, ease: 'power1.in', stagger: { each: 0.015, from: 'end' } }, 0);
   if (highlight) timeline.to(highlight, { opacity: 0, duration: 0.12, ease: 'power1.in' }, 0);
   timeline.to(face, { autoAlpha: 1, duration: token.fade * 1.6, ease: 'power1.out' }, 0.08);
@@ -132,7 +190,10 @@ function exit(popup: HTMLElement, card: HTMLElement, done: () => void) {
       timeline.to(to, { x: dx, y: dy, scale: target, transformOrigin: '0 0', duration: token.exitDuration }, 0);
     }
   }
-  timeline.to(popup, { clipPath: collapsed, duration: token.exitDuration }, 0);
+  // First the shadow's reach comes back to the box (quickly, it is only a shadow), then the surface closes into
+  // the card with all four corners still round.
+  timeline.fromTo(popup, { clipPath: from }, { clipPath: flush, duration: tail * 0.6, ease: 'power1.in' }, 0);
+  timeline.fromTo(popup, { clipPath: flush }, { clipPath: collapsed, duration: token.exitDuration - tail * 0.6, immediateRender: false }, tail * 0.6);
   return timeline;
 }
 
@@ -165,6 +226,7 @@ function MorphStart({ card, morph }: { card: RefObject<HTMLButtonElement | null>
       current.timeline?.kill();
       current.timeline = null;
       current.started = false;
+      gsap.set(popupNode, { clearProps: 'overflowY,minHeight' });
       cardNode.removeAttribute('data-morphing');
     };
   }, [card, morph]);
@@ -275,7 +337,7 @@ export function ActionCardMenu({
       positionerProps={{ collisionAvoidance: { side: 'shift', align: 'shift' } }}
       portalProps={portalProps}
       reduceMotion={reduced}
-      className={cn(!reduced && popupClasses, contentClassName)}
+      className={cn(scrollbarClasses, !reduced && popupClasses, contentClassName)}
     >
       {!reduced && <MorphStart card={card} morph={morph} />}
       {!reduced && <div

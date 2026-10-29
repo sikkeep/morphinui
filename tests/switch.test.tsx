@@ -3,7 +3,8 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { gsap } from 'gsap';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { Check, X } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Cancel01Icon, Tick02Icon } from '@hugeicons/core-free-icons';
 import { MotionProvider, motionTokens } from '@/registry/morphin/lib/motion';
 import { Switch, SwitchGroup } from '@/registry/morphin/ui/switch';
 
@@ -76,7 +77,7 @@ describe('Switch', () => {
   });
 
   it('stacks decorative thumb icons for a blur-and-scale swap', () => {
-    render(<Switch aria-label="Dark mode" checkedIcon={<Check />} uncheckedIcon={<X />} />);
+    render(<Switch aria-label="Dark mode" checkedIcon={<HugeiconsIcon icon={Tick02Icon} aria-hidden="true" />} uncheckedIcon={<HugeiconsIcon icon={Cancel01Icon} aria-hidden="true" />} />);
     const icons = screen.getByRole('switch').querySelectorAll('[data-slot=switch-icon]');
     expect(icons).toHaveLength(2);
     for (const icon of icons) {

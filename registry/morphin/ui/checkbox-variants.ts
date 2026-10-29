@@ -41,9 +41,9 @@ export const checkboxVariants = cva(
 /** The tick and the dash fill the box's inner cell. */
 export const checkboxIndicatorClasses = 'pointer-events-none grid size-full place-items-center [&_svg]:[grid-area:1/1] [&_svg]:size-(--choice-icon)';
 
-/** The path lengths of the lucide `Check` and `Minus` icons, rounded up, for `--check-len`. */
-export const checkIconLength = 23;
-export const minusIconLength = 14;
+/** The path lengths of the Hugeicons `Tick02Icon` and `MinusSignIcon`, rounded up, for `--check-len`. */
+export const checkIconLength = 21;
+export const minusIconLength = 16;
 
 export const checkboxFieldVariants = cva('group/choice-field inline-flex max-w-full items-start gap-3 has-data-disabled:cursor-not-allowed', {
   variants: { labelPosition: { start: 'justify-between', end: null } },

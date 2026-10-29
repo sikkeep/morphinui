@@ -9,7 +9,8 @@ import {
 } from 'react-day-picker';
 import { gsap } from 'gsap';
 import { CustomEase } from 'gsap/CustomEase';
-import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { ArrowDown01Icon, ArrowLeft01Icon, ArrowRight01Icon, ArrowUp01Icon } from '@hugeicons/core-free-icons';
 import { cn } from '@/lib/utils';
 import { useReducedMotion } from '@/registry/morphin/lib/motion';
 import { useSound } from '@/registry/morphin/lib/sound';
@@ -161,8 +162,8 @@ function CalendarNav(props: NavProps) {
 }
 
 function CalendarChevron({ orientation = 'left', className, style }: ChevronProps) {
-  const Icon = { left: ChevronLeft, right: ChevronRight, up: ChevronUp, down: ChevronDown }[orientation];
-  return <Icon className={className} style={style} strokeWidth={1.8} aria-hidden="true" />;
+  const icon = { left: ArrowLeft01Icon, right: ArrowRight01Icon, up: ArrowUp01Icon, down: ArrowDown01Icon }[orientation];
+  return <HugeiconsIcon icon={icon} className={className} style={style} strokeWidth={1.8} aria-hidden="true" />;
 }
 
 function CalendarNavButton({ children, className, style, onClick, tabIndex, 'aria-label': label, 'aria-disabled': unavailable }: PreviousMonthButtonProps | NextMonthButtonProps) {

@@ -2,7 +2,8 @@
 
 import { createContext, use, useMemo, type ReactNode } from 'react';
 import { Accordion as BaseAccordion } from '@base-ui/react/accordion';
-import { ChevronDown } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { ArrowDown01Icon } from '@hugeicons/core-free-icons';
 import { cn } from '@/lib/utils';
 import { useReducedMotion } from '@/registry/morphin/lib/motion';
 import { useSound } from '@/registry/morphin/lib/sound';
@@ -97,7 +98,7 @@ export function AccordionTrigger({
     >
       <span data-slot="accordion-label" className={accordionLabelClasses}>{children}</span>
       {icon === undefined
-        ? <ChevronDown data-icon="inline-end" strokeWidth={2} aria-hidden="true" className={accordionChevronClasses} />
+        ? <HugeiconsIcon icon={ArrowDown01Icon} data-icon="inline-end" strokeWidth={2} aria-hidden="true" className={accordionChevronClasses} />
         : icon}
     </BaseAccordion.Trigger>
   </BaseAccordion.Header>;

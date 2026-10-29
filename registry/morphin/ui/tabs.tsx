@@ -2,7 +2,8 @@
 
 import { createContext, use, useCallback, useEffect, useMemo, useRef, useState, type HTMLAttributes, type Ref, type RefObject } from 'react';
 import { Tabs as BaseTabs } from '@base-ui/react/tabs';
-import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { ArrowDown01Icon, ArrowLeft01Icon, ArrowRight01Icon, ArrowUp01Icon } from '@hugeicons/core-free-icons';
 import { cn } from '@/lib/utils';
 import { useReducedMotion } from '@/registry/morphin/lib/motion';
 import { useSound, type SoundOptions } from '@/registry/morphin/lib/sound';
@@ -119,9 +120,9 @@ function ScrollButton({
   label: string;
   onClick: () => void;
 }) {
-  const Icon = orientation === 'vertical'
-    ? (edge === 'start' ? ChevronUp : ChevronDown)
-    : (edge === 'start' ? ChevronLeft : ChevronRight);
+  const icon = orientation === 'vertical'
+    ? (edge === 'start' ? ArrowUp01Icon : ArrowDown01Icon)
+    : (edge === 'start' ? ArrowLeft01Icon : ArrowRight01Icon);
   return <button
     type="button"
     tabIndex={-1}
@@ -131,7 +132,7 @@ function ScrollButton({
     className={tabsScrollButtonVariants({ variant, edge })}
     onClick={onClick}
   >
-    <Icon strokeWidth={2.2} />
+    <HugeiconsIcon icon={icon} strokeWidth={2.2} aria-hidden="true" />
   </button>;
 }
 

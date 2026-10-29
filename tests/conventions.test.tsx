@@ -8,9 +8,10 @@ const files = (dir: string): string[] => readdirSync(dir, { withFileTypes: true 
   .filter(file => /\.(tsx?|css)$/.test(file));
 
 describe('registry conventions', () => {
-  it('draws icons with lucide-react, never with hardcoded svg markup', () => {
+  it('draws icons with Hugeicons, never with hardcoded svg markup or another icon set', () => {
     for (const file of files(sources)) {
-      // Charts draw data with SVG paths; everything else must use lucide for glyphs.
+      expect(readFileSync(file, 'utf8'), file).not.toMatch(/from 'lucide-react'|from '@hugeicons-pro\//);
+      // Charts draw data with SVG paths; everything else must use Hugeicons for glyphs.
       if (/chart-pro|split-bar-pro/.test(file)) continue;
       expect(readFileSync(file, 'utf8'), file).not.toMatch(/<svg[\s>]/);
     }

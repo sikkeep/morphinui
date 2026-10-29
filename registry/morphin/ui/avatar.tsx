@@ -2,7 +2,8 @@
 
 import { Children, createContext, isValidElement, use, type HTMLAttributes, type ReactNode, type Ref } from 'react';
 import { Avatar as BaseAvatar } from '@base-ui/react/avatar';
-import { User } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { UserIcon } from '@hugeicons/core-free-icons';
 import { cn } from '@/lib/utils';
 import { useReducedMotion } from '@/registry/morphin/lib/motion';
 import {
@@ -79,7 +80,7 @@ export function Avatar({
         className={cn('size-full object-cover', !reduced && 'transition-opacity duration-200 data-starting-style:opacity-0')}
       />}
       <BaseAvatar.Fallback data-slot="avatar-fallback" delay={fallbackDelay} className="flex size-full items-center justify-center">
-        {fallback ?? (initials || <User className="size-[55%]" aria-hidden="true" />)}
+        {fallback ?? (initials || <HugeiconsIcon icon={UserIcon} className="size-[55%]" aria-hidden="true" />)}
       </BaseAvatar.Fallback>
     </BaseAvatar.Root>
     {status && <span data-slot="avatar-status" data-status={status} aria-hidden="true" className={avatarStatusClasses(status, resolvedShape)} />}

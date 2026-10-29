@@ -85,6 +85,10 @@ async function serveProRegistry() {
 }
 
 const expectedFiles = [
+  'src/components/ui/ai-chat.tsx', 'src/components/ui/chat.tsx', 'src/components/ui/chat-variants.ts',
+  'src/components/ui/prompt-input.tsx', 'src/components/ui/prompt-input-variants.ts',
+  'src/components/ui/bar-chart.tsx', 'src/components/ui/bar-chart-variants.ts', 'src/components/ui/bar-chart-motion.tsx',
+  'src/components/ui/data-table.tsx', 'src/components/ui/data-table-variants.ts',
   'src/components/ui/button.tsx', 'src/components/ui/button-variants.ts', 'src/components/ui/button-content.tsx',
   'src/components/ui/dropdown.tsx', 'src/components/ui/dropdown-variants.ts', 'src/components/ui/dropdown-highlight.tsx',
   'src/components/ui/select.tsx', 'src/components/ui/select-variants.ts',
@@ -112,7 +116,7 @@ const expectedFiles = [
 ];
 
 // The components every scenario installs; they pull in button, motion and tokens through registryDependencies.
-const components = ['@morphin/dropdown', '@morphin/select', '@morphin/button-group', '@morphin/split-button', '@morphin/link-button', '@morphin/badge', '@morphin/chip', '@morphin/avatar', '@morphin/card', '@morphin/announcement', '@morphin/checkbox', '@morphin/radio', '@morphin/action-card', '@morphin/action-card-menu', '@morphin/toast', '@morphin/input', '@morphin/textarea', '@morphin/switch', '@morphin/slider', '@morphin/modal', '@morphin/tabs', '@morphin/accordion', '@morphin/calendar', '@morphin/date-picker', '@morphin/spinner', '@morphin/skeleton', '@morphin/sound-cuelume'];
+const components = ['@morphin/ai-chat', '@morphin/bar-chart', '@morphin/data-table', '@morphin/dropdown', '@morphin/select', '@morphin/button-group', '@morphin/split-button', '@morphin/link-button', '@morphin/badge', '@morphin/chip', '@morphin/avatar', '@morphin/card', '@morphin/announcement', '@morphin/checkbox', '@morphin/radio', '@morphin/action-card', '@morphin/action-card-menu', '@morphin/toast', '@morphin/input', '@morphin/textarea', '@morphin/switch', '@morphin/slider', '@morphin/modal', '@morphin/tabs', '@morphin/accordion', '@morphin/calendar', '@morphin/date-picker', '@morphin/spinner', '@morphin/skeleton', '@morphin/sound-cuelume'];
 
 async function scenario(name: string, items: string[], registryUrl: string, checkCss: (css: string) => void) {
   const project = await mkdtemp(join(tmpdir(), `morphin-registry-${name}-`));
@@ -135,6 +139,7 @@ async function scenario(name: string, items: string[], registryUrl: string, chec
     assert(css.includes('--corner-shape: superellipse(1.2)'), `[${name}] tokens were not written to src/index.css`);
     assert(css.includes('--color-brand: var(--brand)'), `[${name}] token utilities were not added to @theme inline`);
     assert(css.includes('--color-subtle-foreground: var(--subtle-foreground)') && css.includes('--success:'), `[${name}] text levels and status colors are missing`);
+    assert(css.includes('--color-bar-chart: var(--bar-chart)') && css.includes('--bar-chart:'), `[${name}] the bar chart palette is missing`);
     checkCss(css);
 
     console.log(`[${name}] Type-checking, building and rendering on the server…`);
@@ -145,7 +150,7 @@ async function scenario(name: string, items: string[], registryUrl: string, chec
     const stylesheet = (await readdir(assets)).find(file => file.endsWith('.css'));
     assert(stylesheet, `[${name}] the build produced no stylesheet`);
     const built = await readFile(join(assets, stylesheet), 'utf8');
-    for (const marker of ['superellipse(1.2)', '.bg-primary', '.bg-brand', '.shadow-popover', '.rounded-\\[999px\\]']) {
+    for (const marker of ['superellipse(1.2)', '.bg-primary', '.bg-brand', '.bg-bar-chart', '.shadow-popover', '.rounded-\\[999px\\]']) {
       assert(built.includes(marker), `[${name}] the built CSS is missing ${marker}`);
     }
     console.log(`[${name}] passed.`);
@@ -237,12 +242,28 @@ async function proScenario(registryUrl: string, siteUrl: string) {
     }
     assert(!/from '[^']*toast-pro/.test(await readFile(join(project, 'src/components/ui/toast.tsx'), 'utf8')), `[${name}] the free toast depends on the Pro item`);
 
-    // Only toast was installed, so the fixture's App (which uses every component) gives way to a small one.
+    // A Max chart brings the shared chart primitives with it.
+    console.log(`[${name}] morphinui add funnel-chart-pro`);
+    await morphinui(base, 'add', 'funnel-chart-pro', '--yes');
+    for (const path of ['src/components/ui/funnel-chart-pro.tsx', 'src/components/ui/funnel-chart-pro-variants.ts', 'src/components/ui/chart-pro.ts', 'src/components/ui/chart-pro-roll.tsx']) {
+      assert(existsSync(join(project, path)), `[${name}] ${path} was not installed`);
+    }
+
+    console.log(`[${name}] morphinui add agent-inbox-pro`);
+    await morphinui(base, 'add', 'agent-inbox-pro', '--yes');
+    for (const path of ['src/components/ui/agent-inbox-pro.tsx', 'src/components/ui/agent-inbox-pro-variants.ts', 'src/components/ui/button-group.tsx', 'src/components/ui/spinner.tsx']) {
+      assert(existsSync(join(project, path)), `[${name}] ${path} was not installed`);
+    }
+
+    // Only the Pro items were installed, so the fixture's App (which uses every component) gives way to a small one.
     await writeFile(join(project, 'src/App.tsx'), [
       "import { toast, Toaster } from '@/components/ui/toast';",
       "import { proToastEffects } from '@/components/ui/toast-pro';",
+      "import { FunnelChart } from '@/components/ui/funnel-chart-pro';",
+      "import { AgentInbox } from '@/components/ui/agent-inbox-pro';",
+      "const stages = [{ id: 'visit', label: 'Visited', value: 1000 }, { id: 'buy', label: 'Bought', value: 120 }];",
       'export function App() {',
-      "  return <button type=\"button\" onClick={() => toast.success('Saved')}><Toaster effects={proToastEffects} />Save</button>;",
+      "  return <><button type=\"button\" onClick={() => toast.success('Saved')}><Toaster effects={proToastEffects} />Save</button><FunnelChart title=\"Checkout\" stages={stages} /><AgentInbox tasks={[{ id: 'a', title: 'Import', status: 'waiting', startedAt: 0 }]} /></>;",
       '}',
       '',
     ].join('\n'));

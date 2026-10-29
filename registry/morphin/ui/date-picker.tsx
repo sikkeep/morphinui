@@ -3,7 +3,8 @@
 import { useCallback, useId, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Popover } from '@base-ui/react/popover';
 import { useLabelableContext, useLabelableId } from '@base-ui/react/internals/labelable-provider';
-import { CalendarDays } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Calendar03Icon } from '@hugeicons/core-free-icons';
 import type { DateRange, DayPickerLocale, PropsBase, PropsRange } from 'react-day-picker';
 import { cn } from '@/lib/utils';
 import { useReducedMotion } from '@/registry/morphin/lib/motion';
@@ -163,7 +164,7 @@ export function DatePicker(props: DatePickerProps) {
       className={stateClasses(selectTriggerClasses({ variant, size, fullWidth }, 'justify-start'), className)}
     >
       <span data-slot="date-picker-icon" data-icon="inline-start" className="pointer-events-none inline-flex shrink-0 items-center justify-center text-muted-foreground" aria-hidden="true">
-        <CalendarDays strokeWidth={1.8} />
+        <HugeiconsIcon icon={Calendar03Icon} aria-hidden="true" strokeWidth={1.8} />
       </span>
       <span id={valueId} data-slot="date-picker-value" className="min-w-0 flex-1 truncate text-start">{text ?? placeholder}</span>
     </Popover.Trigger>

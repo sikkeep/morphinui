@@ -2,7 +2,8 @@
 
 import { createContext, use, type HTMLAttributes, type ReactNode, type Ref } from 'react';
 import { Menu } from '@base-ui/react/menu';
-import { Check, ChevronRight } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { ArrowRight01Icon, Tick02Icon } from '@hugeicons/core-free-icons';
 import { Button } from '@/registry/morphin/ui/button';
 import { cn } from '@/lib/utils';
 import { useReducedMotion } from '@/registry/morphin/lib/motion';
@@ -228,7 +229,7 @@ export function DropdownRadioItem({
   }} className={stateClasses(base, className)}>
     <ItemContent leadingIcon={leadingIcon}>{children}</ItemContent>
     {(showIndicator ?? !segmented) && <span className={cn('inline-flex size-4 shrink-0 items-center justify-center', spacer)} aria-hidden="true">
-      <Menu.RadioItemIndicator data-slot="dropdown-item-indicator"><Check strokeWidth={1.8} /></Menu.RadioItemIndicator>
+      <Menu.RadioItemIndicator data-slot="dropdown-item-indicator"><HugeiconsIcon icon={Tick02Icon} aria-hidden="true" strokeWidth={1.8} /></Menu.RadioItemIndicator>
     </span>}
   </Menu.RadioItem>;
 }
@@ -248,7 +249,7 @@ export function DropdownCheckboxItem({
   }} className={stateClasses(dropdownItemVariants({ variant, inset }), className)}>
     <ItemContent leadingIcon={leadingIcon}>{children}</ItemContent>
     <span className={cn('inline-flex size-4 shrink-0 items-center justify-center', spacer)} aria-hidden="true">
-      <Menu.CheckboxItemIndicator data-slot="dropdown-item-indicator"><Check strokeWidth={1.8} /></Menu.CheckboxItemIndicator>
+      <Menu.CheckboxItemIndicator data-slot="dropdown-item-indicator"><HugeiconsIcon icon={Tick02Icon} aria-hidden="true" strokeWidth={1.8} /></Menu.CheckboxItemIndicator>
     </span>
   </Menu.CheckboxItem>;
 }
@@ -263,7 +264,7 @@ export function DropdownSubTrigger({
   const spacer = useEndSpacer(leadingIcon);
   return <Menu.SubmenuTrigger data-slot="dropdown-sub-trigger" data-variant={variant ?? 'default'} {...props} ref={ref} className={stateClasses(dropdownItemVariants({ variant, inset }), className)}>
     <ItemContent leadingIcon={leadingIcon}>{children}</ItemContent>
-    <ChevronRight className={cn(spacer, 'rtl:rotate-180')} strokeWidth={1.8} />
+    <HugeiconsIcon icon={ArrowRight01Icon} aria-hidden="true" className={cn(spacer, 'rtl:rotate-180')} strokeWidth={1.8} />
   </Menu.SubmenuTrigger>;
 }
 
