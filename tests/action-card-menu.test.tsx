@@ -37,6 +37,13 @@ function Sort(props: Partial<React.ComponentProps<typeof ActionCardMenu>>) {
 
 const popupOf = () => document.querySelector<HTMLElement>('[data-slot=action-card-menu]');
 
+// Finish the enter through its timeline: a child tween set to the end is drawn again from the timeline's
+// playhead on the next tick, which a slow machine reaches before the next line and the close then starts mid-enter.
+const finishEnter = (popup: HTMLElement) => {
+  const timeline = gsap.getTweensOf(popup).find((tween) => 'clipPath' in tween.vars)!.parent!;
+  act(() => { timeline.progress(1); });
+};
+
 describe('ActionCardMenu', () => {
   it('shows the card with the chosen label and names it with the title', () => {
     render(<Sort />);
@@ -188,7 +195,7 @@ describe('ActionCardMenu', () => {
       const card = screen.getByRole('button', { name: 'Sort by: New' });
       await user.click(card);
       await waitFor(() => expect(card).toHaveAttribute('data-morphing'));
-      act(() => { gsap.getTweensOf(popupOf()!).forEach((tween) => tween.progress(1)); });
+      finishEnter(popupOf()!);
       await user.keyboard('{Escape}');
       const grow = gsap.getTweensOf(popupOf()!).find((tween) => 'minHeight' in tween.vars && tween.progress() < 1)!;
       expect(grow.vars.minHeight).toBe(128);
@@ -213,7 +220,7 @@ describe('ActionCardMenu', () => {
     await user.click(card);
     await waitFor(() => expect(card).toHaveAttribute('data-morphing'));
     const popup = popupOf()!;
-    gsap.getTweensOf(popup).forEach((tween) => tween.progress(1));
+    finishEnter(popup);
     // At rest all four sides are equal, and that is how the browser reads them back.
     popup.style.clipPath = 'inset(-24px round 14px)';
     await user.keyboard('{Escape}');
@@ -262,7 +269,7 @@ describe('ActionCardMenu', () => {
     const card = screen.getByRole('button', { name: 'Sort by: New' });
     await user.click(card);
     await waitFor(() => expect(card).toHaveAttribute('data-morphing'));
-    gsap.getTweensOf(popupOf()!).forEach((tween) => tween.progress(1));
+    finishEnter(popupOf()!);
     await user.keyboard('{Escape}');
     // Base UI would have unmounted it; the closing animation holds it.
     expect(popupOf()).not.toBeNull();
